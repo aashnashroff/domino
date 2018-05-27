@@ -16,7 +16,7 @@ public class PlayActivity extends AppCompatActivity {
 
     }
 
-    public void startGyroscope(View view) {
+    public void startAccelerometer(View view) {
 
     }
 }

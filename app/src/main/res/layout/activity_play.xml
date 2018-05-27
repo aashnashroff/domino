@@ -16,11 +16,11 @@
         tools:layout_editor_absoluteY="231dp" />
 
     <Button
-        android:id="@+id/gyroscope-play-start"
+        android:id="@+id/accelerometer-play-start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGyroscope"
-        android:text="Gyroscope"
-        tools:layout_editor_absoluteX="224dp"
+        android:onClick="startAccelerometer"
+        android:text="Accelerometer"
+        tools:layout_editor_absoluteX="182dp"
         tools:layout_editor_absoluteY="231dp" />
 </android.support.constraint.ConstraintLayout>
