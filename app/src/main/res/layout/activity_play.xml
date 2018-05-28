@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,16 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="startLight"
-        android:text="Light"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="231dp" />
+        android:text="Light" />
 
     <Button
         android:id="@+id/accelerometer-play-start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="startAccelerometer"
-        android:text="Accelerometer"
-        tools:layout_editor_absoluteX="182dp"
-        tools:layout_editor_absoluteY="231dp" />
-</android.support.constraint.ConstraintLayout>
+        android:text="Accelerometer" />
+</LinearLayout>

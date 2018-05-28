@@ -12,12 +12,12 @@ public class AccelPlayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accel_play);
     }
-
-    /** Called when the user selects the Accelerometer from the sensor playground. */
-    public void StartAccel(View view) {
-        Intent intent = new Intent(this, PlayActivity.class);
-        startActivity(intent);
-        setContentView(R.layout.activity_accel_play);
-    }
+//
+//    /** Called when the user selects the Accelerometer from the sensor playground. */
+//    public void StartAccel(View view) {
+//        Intent intent = new Intent(this, AccelPla.class);
+//        startActivity(intent);
+//        setContentView(R.layout.activity_accel_play);
+//    }
 }
 
