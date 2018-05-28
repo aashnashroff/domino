@@ -16,11 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     /** Called when the user touches the play button. */
     public void startPlay(View view) {
-
         Intent intent = new Intent(this, PlayActivity.class);
-
-//        intent.putExtra("domino_name", "testDominoName");
-
         startActivity(intent);
         setContentView(R.layout.activity_play);
     }
