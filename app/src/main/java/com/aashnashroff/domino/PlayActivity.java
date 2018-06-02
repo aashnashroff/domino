@@ -20,8 +20,8 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     public void startAccelerometer(View view) {
-//        Intent intent = new Intent(this, AccelerometerPlayActivity.class);
-//        startActivity(intent);
-//        setContentView(R.layout.activity_accelerometer_play);
+        Intent intent = new Intent(this, AccelPlayActivity.class);
+        startActivity(intent);
+        setContentView(R.layout.activity_accel_play);
     }
 }
