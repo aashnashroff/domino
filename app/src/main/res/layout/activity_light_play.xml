@@ -1,46 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/play_light_background"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_centerHorizontal="true"
     tools:context=".LightPlayActivity">
-    >
-<TextView 
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/tvDisplay"
 
-    />
-<ProgressBar
-    android:id="@+id/lightmeter"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:padding="80dp"
-    style="?android:attr/progressBarStyleHorizontal"
-    android:max="100"
-    android:progress="0"
-    />
-<TextView 
-    android:id="@+id/max"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"    
-    />
-<TextView 
-    android:id="@+id/reading"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content" 
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_lightbulb"
+        android:adjustViewBounds="true"
+        android:maxWidth="150dp"
+        android:maxHeight="150dp"
+        android:scaleType="fitCenter"/>
 
-    />
-<Button 
-    android:layout_width="250dp" 
-    android:layout_height="wrap_content"
-    android:text="Start"  
-    android:layout_y="249dp"  
-    android:textSize="30dp"
-    android:onClick="onButtonDown"
-    android:id="@+id/bStart" 
-    ></Button>
+    <TextView
+        android:id="@+id/lux_value"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#FCFCFC"
+        android:textSize="80dp"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="lux"
+        android:textColor="#FCFCFC"
+        android:textSize="40dp"
+        android:gravity="center"
+        />
 
 </LinearLayout>
