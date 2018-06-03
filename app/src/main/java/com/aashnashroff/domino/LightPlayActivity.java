@@ -1,5 +1,7 @@
 package com.aashnashroff.domino;
 
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -11,6 +13,9 @@ import android.hardware.SensorManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.media.MediaPlayer;
+import android.media.PlaybackParams;
+
 
 import android.support.v4.graphics.ColorUtils;
 
@@ -25,6 +30,14 @@ public class LightPlayActivity extends AppCompatActivity {
     TextView textReading;
     LinearLayout layout;
 
+//    SoundPool sp;
+//    int id;
+
+    MediaPlayer mediaPlayer;
+
+
+    int stupidCounter = 0;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,6 +46,16 @@ public class LightPlayActivity extends AppCompatActivity {
 
         textReading = findViewById(R.id.lux_value);
         layout = (LinearLayout) findViewById(R.id.play_light_background);
+
+//        sp = new SoundPool.Builder().build();
+//        id = sp.load(this, R.raw.a4_2, 0);
+//        sp.play(id, 1,1,0,-1, 1.0f);
+å
+//        player = new AudioTrack.Builder().build();
+
+        mediaPlayer = mediaPlayer.create(this, R.raw.a4_10min);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
 
         SensorManager sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager != null) {
@@ -75,7 +98,22 @@ public class LightPlayActivity extends AppCompatActivity {
                 luxValue = (double) event.values[0];
                 textReading.setText(String.valueOf(luxValue));
                 layout.setBackgroundColor(getBackgroundColorFromLux(luxValue));
+//                if (stupidCounter % 20 == 0)
+//                sp.play(id, 1,1,0,-1, (float)(luxToEV(luxValue)));
+//                stupidCounter++;
+                PlaybackParams pm = mediaPlayer.getPlaybackParams();
+                pm.setPitch(getPitch(luxValue));
+                mediaPlayer.setPlaybackParams(pm);
+
             }
+        }
+
+        private float getPitch(double lux) {
+            double EV = luxToEV(lux);
+            double maxEV = luxToEV(maxLux);
+            float pitch = (float) Math.max(0.5, Math.min(4, EV / 5));
+            return pitch;
+            // (float)(luxToEV(luxValue)/5) > 0 ? (float)(luxToEV(luxValue)/5) : 0.2f)
         }
 
     };
