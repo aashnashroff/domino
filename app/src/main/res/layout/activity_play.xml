@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".PlayActivity">
 
-    <Button
+    <com.aashnashroff.domino.LatoButton
         android:id="@+id/light-play-start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="startLight"
         android:text="Light" />
 
-    <Button
+    <com.aashnashroff.domino.LatoButton
         android:id="@+id/accelerometer-play-start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

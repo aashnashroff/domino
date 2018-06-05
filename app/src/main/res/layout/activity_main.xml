@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.aashnashroff.domino.MainActivity">
 
-    <TextView
+    <com.aashnashroff.domino.LatoTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Play with sensors!"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.245" />
 
-    <Button
+    <com.aashnashroff.domino.LatoButton
         android:id="@+id/start-play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

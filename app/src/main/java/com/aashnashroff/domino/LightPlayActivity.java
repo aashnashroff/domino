@@ -1,7 +1,5 @@
 package com.aashnashroff.domino;
 
-import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -11,15 +9,19 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View;
+
 import android.media.MediaPlayer;
 import android.media.PlaybackParams;
+import android.media.SoundPool;
 
 
 import android.support.v4.graphics.ColorUtils;
 
 public class LightPlayActivity extends AppCompatActivity {
+
+    public enum AudioMode {FLOWING, MUTE, INTERVAL};
 
     public static final float BACKGROUND_HUE = 210;
     public static final float BACKGROUND_SATURATION = 0.5f;
@@ -27,16 +29,20 @@ public class LightPlayActivity extends AppCompatActivity {
     double luxValue = 0;
     double maxLux = 50000; /* TODO: change default value here. */
 
-    TextView textReading;
+    AudioMode audioMode;
+
+    LatoTextView textReading;
     LinearLayout layout;
+    LatoButton audioController;
 
-//    SoundPool sp;
-//    int id;
-
+    /* Flowing audio state. */
     MediaPlayer mediaPlayer;
 
-
-    int stupidCounter = 0;
+    /* Interval audio state. */
+    SoundPool sp;
+    int sp_id;
+    int sp_play_id;
+    float volumeFactor = 0.3f;
 
     /** Called when the activity is first created. */
     @Override
@@ -46,17 +52,20 @@ public class LightPlayActivity extends AppCompatActivity {
 
         textReading = findViewById(R.id.lux_value);
         layout = (LinearLayout) findViewById(R.id.play_light_background);
+        audioController = (LatoButton) findViewById(R.id.light_play_audio_controller);
 
-//        sp = new SoundPool.Builder().build();
-//        id = sp.load(this, R.raw.a4_2, 0);
-//        sp.play(id, 1,1,0,-1, 1.0f);
-å
-//        player = new AudioTrack.Builder().build();
-
+        /* Set up audio resources. */
         mediaPlayer = mediaPlayer.create(this, R.raw.a4_10min);
         mediaPlayer.setLooping(true);
-        mediaPlayer.start();
+        sp = new SoundPool.Builder().build();
+        sp_id = sp.load(this, R.raw.a2, 0);
+        sp_play_id = -1;
 
+        /* Default to starting on */
+        audioMode = AudioMode.FLOWING;
+        useCorrectAudioBySetting();
+
+        /* Register sensor event listener for light to this activity. */
         SensorManager sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager != null) {
             Sensor lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
@@ -69,21 +78,51 @@ public class LightPlayActivity extends AppCompatActivity {
             }
         }
 
+        /* TODO: test if this works somehow.
+         * Display sensor not available error. */
         Toast.makeText(LightPlayActivity.this,
                 "Sensor not available.",
                 Toast.LENGTH_LONG).show();
     }
 
-    private double luxToEV(double lux) {
-        return Math.log(lux / 2.5) / (Math.log(2));
+    private void useCorrectAudioBySetting() {
+        if (audioMode == AudioMode.MUTE) {
+            mediaPlayer.pause();
+//            if (sp_play_id != -1) sp.pause(sp_play_id);
+        } else if (audioMode == AudioMode.INTERVAL) {
+            mediaPlayer.pause();
+            sp_play_id = sp.play(sp_id, volumeFactor, volumeFactor,0,-1, (float)(luxToEV(luxValue)));
+        } else if (audioMode == AudioMode.FLOWING) {
+            sp.pause(sp_play_id);
+            mediaPlayer.start();
+        }
     }
 
-    private int getBackgroundColorFromLux(double lux) {
-        double EV = luxToEV(lux);
-        double maxEV = luxToEV(maxLux);
+    /**Changes audio settings after button clicks. */
+    public void changeAudioSettings(View view) {
+        if (audioMode == AudioMode.FLOWING) {
+            audioMode = AudioMode.MUTE;
+            audioController.setText("Interval Audio");
+        } else if (audioMode == AudioMode.MUTE) {
+            audioMode = AudioMode.INTERVAL;
+            audioController.setText("Flowing Audio");
+        } else if (audioMode == AudioMode.INTERVAL) {
+            audioMode = AudioMode.FLOWING;
+            audioController.setText("Mute Audio");
+        }
 
-        float brightness = EV > maxEV ? 1 : (float) (EV / maxEV);
-        return ColorUtils.HSLToColor(new float[] {BACKGROUND_HUE, BACKGROUND_SATURATION, brightness});
+        useCorrectAudioBySetting();
+    }
+
+    /**
+     * Converts lux to EV based on the log scale.
+     * Formula run in reverse: lux = 2.5 * 2^EV
+     *
+     * @param lux
+     * @return EV
+     */
+    private double luxToEV(double lux) {
+        return Math.log(lux / 2.5) / (Math.log(2));
     }
 
     SensorEventListener lightSensorEventListener = new SensorEventListener() {
@@ -95,26 +134,56 @@ public class LightPlayActivity extends AppCompatActivity {
         @Override
         public void onSensorChanged(SensorEvent event) {
             if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
+                /* Get sensor value. */
                 luxValue = (double) event.values[0];
+
+                /* Update display with new lux value. */
                 textReading.setText(String.valueOf(luxValue));
+
+                /* Set background color. */
                 layout.setBackgroundColor(getBackgroundColorFromLux(luxValue));
-//                if (stupidCounter % 20 == 0)
-//                sp.play(id, 1,1,0,-1, (float)(luxToEV(luxValue)));
-//                stupidCounter++;
-                PlaybackParams pm = mediaPlayer.getPlaybackParams();
-                pm.setPitch(getPitch(luxValue));
-                mediaPlayer.setPlaybackParams(pm);
+
+                /* Set pitch value. */
+                setPitch(luxValue);
 
             }
         }
-
-        private float getPitch(double lux) {
-            double EV = luxToEV(lux);
-            double maxEV = luxToEV(maxLux);
-            float pitch = (float) Math.max(0.5, Math.min(4, EV / 5));
-            return pitch;
-            // (float)(luxToEV(luxValue)/5) > 0 ? (float)(luxToEV(luxValue)/5) : 0.2f)
-        }
-
     };
+
+    /**
+     * Gets background color based on lux value -- ideally this based on EV values and changes
+     * colors of the background based on the EV log scale.
+     *
+     * @param lux
+     */
+    private int getBackgroundColorFromLux(double lux) {
+        double EV = luxToEV(lux);
+        double maxEV = luxToEV(maxLux);
+
+        float brightness = EV > maxEV ? 1 : (float) (EV / maxEV);
+        return ColorUtils.HSLToColor(new float[] {BACKGROUND_HUE, BACKGROUND_SATURATION, brightness});
+    }
+
+    /**
+     * Sets pitch based on lux value -- ideally this based on EV values and changes
+     * colors of the background based on the EV log scale.
+     *
+     * Will set the pitch differently based on the sound mode.
+     *
+     * @param lux
+     */
+    private void setPitch(double lux) {
+        double EV = luxToEV(lux);
+        double maxEV = luxToEV(maxLux);
+
+        if (audioMode == AudioMode.FLOWING) {
+            float pitchFactor = (float) Math.max(0.5, Math.min(4, EV / 5));
+            PlaybackParams pm = mediaPlayer.getPlaybackParams();
+            pm.setPitch(pitchFactor);
+            mediaPlayer.setPlaybackParams(pm);
+        } else if (audioMode == AudioMode.INTERVAL) {
+            float pitchFactor = (float) EV;
+            sp_play_id = sp.play(sp_id, volumeFactor, volumeFactor,0,-1, pitchFactor);
+        }
+    }
 }

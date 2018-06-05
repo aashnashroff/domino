@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -19,24 +20,38 @@
         android:maxHeight="150dp"
         android:scaleType="fitCenter"/>
 
-    <TextView
+    <com.aashnashroff.domino.LatoTextView
         android:id="@+id/lux_value"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="#FCFCFC"
-        android:textSize="80dp"
+        android:textSize="80sp"
         android:gravity="center"
         />
 
-    <TextView
+    <com.aashnashroff.domino.LatoTextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="lux"
         android:textColor="#FCFCFC"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:gravity="center"
+        />
+
+    <com.aashnashroff.domino.LatoButton
+        android:id="@+id/light_play_audio_controller"
+        android:onClick="changeAudioSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:layout_marginRight="5dp"
+        android:text="Mute Audio"
+        android:textColor="#FCFCFC"
+        android:layout_gravity="bottom|end"
+        android:background="@android:color/transparent"
+        android:textSize="15sp"
         />
 
 </LinearLayout>
