@@ -28,4 +28,12 @@ public class BuildActivity extends AppCompatActivity {
         });
     }
 
+    public void openInTilePage(View view) {
+        //TODO
+    }
+
+    public void openOutTilePage(View view) {
+        //TODO
+    }
+
 }

@@ -20,4 +20,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         setContentView(R.layout.activity_play);
     }
+
+    public void startBuild(View view) {
+        Intent intent = new Intent(this, BuildActivity.class);
+        startActivity(intent);
+        setContentView(R.layout.activity_build);
+    }
 }

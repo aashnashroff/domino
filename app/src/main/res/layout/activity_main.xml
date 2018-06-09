@@ -17,12 +17,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.245" />
 
+    <!--<com.aashnashroff.domino.LatoButton-->
+        <!--android:id="@+id/start-play"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="startPlay"-->
+        <!--android:text="Play"-->
+        <!--tools:layout_editor_absoluteX="238dp"-->
+        <!--tools:layout_editor_absoluteY="336dp" />-->
+
     <com.aashnashroff.domino.LatoButton
-        android:id="@+id/start-play"
+        android:id="@+id/start-build"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startPlay"
-        android:text="Play"
+        android:onClick="startBuild"
+        android:text="Build"
         tools:layout_editor_absoluteX="238dp"
         tools:layout_editor_absoluteY="336dp" />
 
