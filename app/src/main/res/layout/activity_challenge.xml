@@ -1,44 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/challenges_roadmap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    tools:context="com.aashnashroff.domino.ChallengeActivity">
-
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Alarm System"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="224dp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lights Out"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="302dp" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Where's the sensor?"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="372dp" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:onClick="startPlay"
-        android:text="Play"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="149dp" />
+        android:text="Play" />
 
-</android.support.v7.widget.LinearLayoutCompat>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Where's the sensor?" />
+</LinearLayout>

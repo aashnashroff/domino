@@ -20,6 +20,11 @@
         android:maxHeight="150dp"
         android:scaleType="fitCenter"/>
 
+    <com.aashnashroff.domino.AvenirTextView
+        android:id="@+id/avenirTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <com.aashnashroff.domino.LatoTextView
         android:id="@+id/lux_value"
         android:layout_width="fill_parent"

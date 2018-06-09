@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">domino</string>
     <string name="title_activity_build">BuildActivity</string>
+    <string name="light_play_prompt">Wave your finger across the phone to figure out where the light sensor is. Cover it so it becomes close to 0 lux.</string>
+    <!--<string name="light_challenge_1_name">Lights Out</string>-->
+    <!--<string name="light_challenge_1_description">Let’s create a night light. Create a domino that turns on the flash light when the lights in the room are completely shut off. </string>-->
+    <!--<string name="light_challenge_2_name">Alarm System</string>-->
+    <!--<string name="light_challenge_2_description">Text for the alarm system challenge.</string>-->
+    <string-array name="light_challenges_names">
+        <item>Lights Out</item>
+        <item>Alarm System</item>
+    </string-array>
+
+    <string-array name="light_challenges_descriptions">
+        <item>Let’s create a night light. Create a domino that turns on the flash light when the lights in the room are completely shut off. </item>
+        <item>Description for alarm system</item>
+    </string-array>
 </resources>
