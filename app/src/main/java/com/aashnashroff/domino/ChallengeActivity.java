@@ -24,12 +24,11 @@ public class ChallengeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String[] challenges = intent.getStringArrayExtra("challenges_names");
         String[] challenges_desc = intent.getStringArrayExtra("challenges_desc");
-
         //Iterate through challenges. For each challenge, add and display one button.
         for(int i = 0; i < challenges.length; i++){
             Button challenge_button = new Button(this);
             challenge_button.setText(challenges[i]);
-            setOnClick(challenge_button,challenges_desc[i]);
+            setOnClick(challenge_button, challenges_desc[i]);
             challenge_button.setLayoutParams(new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));

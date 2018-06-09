@@ -21,9 +21,8 @@ public class PlayActivity extends AppCompatActivity {
         //passing sensor information to the Challenges Activity page
         intent.putExtra("sensor", "light");
         String[] challenges_names = getResources().getStringArray(R.array.light_challenges_names);
-        Log.d("startLight", "challenge_names: " + Arrays.toString(challenges_names));
         intent.putExtra("challenges_names", challenges_names);
-        String[] challenges_desc = getResources().getStringArray(R.array.light_challenges_names);
+        String[] challenges_desc = getResources().getStringArray(R.array.light_challenges_descriptions);
         intent.putExtra("challenges_desc", challenges_desc);
 
         startActivity(intent);
