@@ -17,8 +17,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".PlayActivity" />
-        <activity android:name=".AccelPlayActivity"></activity>
-        <activity android:name=".LightPlayActivity"></activity>
+        <activity android:name=".AccelPlayActivity" />
+        <activity android:name=".LightPlayActivity" />
+        <activity
+            android:name=".BuildActivity"
+            android:label="@string/title_activity_build"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

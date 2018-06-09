@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">domino</string>
+    <string name="title_activity_build">BuildActivity</string>
 </resources>
