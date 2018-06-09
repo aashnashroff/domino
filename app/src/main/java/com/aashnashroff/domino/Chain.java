@@ -46,8 +46,12 @@ public class Chain {
         // TODO: Initialize currCEStates to currCE.getInputs().length() 0s;
     }
 
-    public void receiveSensorSignal() {
-
+    public void receiveSensorSignal(InputTile condition) {
+        int ceIndex = ces.indexOf(condition);
+        currCEStates.add(ceIndex, true);
+        // If all elements in currCEStates are true
+        // TODO: Determine if above check can just be if (ceIndex == currCEStates.length-1)
+        // TODO: i.e. do the inputs need to be checked linearly
     }
 
     public void signalNextInput() {

@@ -26,14 +26,15 @@ public class BuildActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        currApp = new Applet();
     }
 
     public void openInTilePage(View view) {
-        //TODO
+        //TODO: Open appropriate build toolbox menu
     }
 
     public void openOutTilePage(View view) {
-        //TODO
+        //TODO: Open appropriate build toolbox menu
     }
-
 }

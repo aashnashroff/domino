@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play);
     }
 
+    //TODO: Move this function to be called by the appropriate menu button
     public void startBuild(View view) {
         Intent intent = new Intent(this, BuildActivity.class);
         startActivity(intent);

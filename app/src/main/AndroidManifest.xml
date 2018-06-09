@@ -22,7 +22,12 @@
         <activity
             android:name=".BuildActivity"
             android:label="@string/title_activity_build"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+
+        <service
+            android:name=".LightSensorService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
