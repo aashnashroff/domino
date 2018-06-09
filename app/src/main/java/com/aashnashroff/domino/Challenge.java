@@ -5,12 +5,14 @@ package com.aashnashroff.domino;
  */
 
 public class Challenge {
-    Applet challenge_solution;
-    String challenge_description;
+    Applet solution;
+    String name;
+    String description;
 
     public Challenge() {
-        challenge_solution = new Applet();
-        challenge_description = "";
+        solution = new Applet();
+        name = "";
+        description = "";
     }
 
     /**
@@ -18,7 +20,7 @@ public class Challenge {
      */
 
     public void setDescription(String str) {
-        challenge_description = str;
+        description = str;
     }
 
     public void setChallengeSolution() {
