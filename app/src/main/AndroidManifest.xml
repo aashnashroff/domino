@@ -19,10 +19,7 @@
         <activity android:name=".PlayActivity" />
         <activity android:name=".AccelPlayActivity" />
         <activity android:name=".LightPlayActivity" />
-        <activity
-            android:name=".BuildActivity"
-            android:label="@string/title_activity_build"
-            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".ChallengeActivity"></activity>
     </application>
 
 </manifest>

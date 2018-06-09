@@ -14,9 +14,9 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     public void startLight(View view) {
-        Intent intent = new Intent(this, LightPlayActivity.class);
+        Intent intent = new Intent(this, ChallengeActivity.class);
         startActivity(intent);
-        setContentView(R.layout.activity_light_play);
+        setContentView(R.layout.activity_challenge);
     }
 
     public void startAccelerometer(View view) {
