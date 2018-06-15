@@ -9,10 +9,12 @@ public class FlashlightOutput extends OutputTile {
 
     private int duration;
     private boolean hasCameraFlash;
+    private boolean forever;
 
-    public FlashlightOutput(int duration, boolean hasCameraFlash ) {
+    public FlashlightOutput(int duration, boolean hasCameraFlash, boolean forever) {
         this.duration = duration;
         this.hasCameraFlash = hasCameraFlash;
+        this.forever = forever;
     }
 
 
@@ -29,9 +31,7 @@ public class FlashlightOutput extends OutputTile {
         if (this.hasCameraFlash) {
             flashLightOn(context);
         } else {
-            //TODO
-//            Toast.makeText(this.context, "No flash available on your device",
-//                    Toast.LENGTH_SHORT).show();
+            //TODO: Flashlight not available on your phone
         }
     }
 
@@ -54,35 +54,38 @@ public class FlashlightOutput extends OutputTile {
 
         try {
             String cameraId = cameraManager.getCameraIdList()[0];
-            while((System.currentTimeMillis() - startTime) < this.duration){
-                if(!currentBlinkStatus) {
-                    cameraManager.setTorchMode(cameraId, true);
-                    currentBlinkStatus = true;
-                }
-                else {
-                    cameraManager.setTorchMode(cameraId, false);
-                    currentBlinkStatus = false;
-                }
-                try {
-                    Thread.sleep(blinkDelay);
-                } catch(InterruptedException e){
-                    e.printStackTrace();
+            if (this.forever) {
+                cameraManager.setTorchMode(cameraId, true);
+            } else {
+                while ((System.currentTimeMillis() - startTime) < (this.duration * 1000)) {
+                    if (!currentBlinkStatus) {
+                        cameraManager.setTorchMode(cameraId, true);
+                        currentBlinkStatus = true;
+                    } else {
+                        cameraManager.setTorchMode(cameraId, false);
+                        currentBlinkStatus = false;
+                    }
+                    try {
+                        Thread.sleep(blinkDelay);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         } catch (CameraAccessException e) {
-
+            //TODO
         }
     }
 
     private void flashLightOff(Context context) {
         CameraManager cameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
 
-        Log.d("STATE", "FLASHLIGHT OFF");
+        //Log.d("STATE", "FLASHLIGHT OFF");
         try {
             String cameraId = cameraManager.getCameraIdList()[0];
             cameraManager.setTorchMode(cameraId, false);
         } catch (CameraAccessException e) {
-
+            //TODO
         }
     }
 

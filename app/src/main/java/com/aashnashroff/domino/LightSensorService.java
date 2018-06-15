@@ -74,6 +74,8 @@ public class LightSensorService extends Service implements SensorEventListener {
                 done.putExtra("condition", condition);
                 conditions.remove(condition);
                 sendBroadcast(done);
+            } else {
+
             }
         }
     }

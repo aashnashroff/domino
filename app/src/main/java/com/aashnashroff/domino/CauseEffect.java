@@ -23,7 +23,7 @@ public class CauseEffect implements Serializable {
 
         inputs.add(firstInput);
         OutputTile firstOutput = new OutputTile();
-        firstOutput = new FlashlightOutput(10, true);
+        firstOutput = new FlashlightOutput(10, true, false);
         outputs.add(firstOutput);
     }
 

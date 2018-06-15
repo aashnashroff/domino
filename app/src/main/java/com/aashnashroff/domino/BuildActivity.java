@@ -50,7 +50,7 @@ public class BuildActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (appIsOn) {
-                    Log.d("STATE", "TURNING OFF");
+//                    Log.d("STATE", "TURNING OFF");
                     lightService.removeAllConditions();
                     for (Chain chain : currApp.getChains()) {
                         for (CauseEffect ce : chain.getCEs()) {
@@ -96,11 +96,11 @@ public class BuildActivity extends AppCompatActivity {
             Chain chain = (Chain) intent.getSerializableExtra("chain");
             InputTile fulfilledCondition = (InputTile) intent.getSerializableExtra("condition");
             InputTile nextCondition = chain.receivedSensorSignal(fulfilledCondition);
-            Log.d("STATE", "Received sensor signal");
+//            Log.d("STATE", "Received sensor signal");
             if (nextCondition != null) {
                 sendCondition(chain, nextCondition);
             } else {
-                Log.d("STATE", "Executing outputs");
+//                Log.d("STATE", "Executing outputs");
                 ArrayList<OutputTile> outputs = chain.getOutputs();
                 for (OutputTile output : outputs) {
                     output.onTrigger(getBaseContext());
