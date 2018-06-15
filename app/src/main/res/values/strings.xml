@@ -15,4 +15,5 @@
         <item>Let’s create a night light. Create a domino that turns on the flash light when the lights in the room are completely shut off. </item>
         <item>Description for alarm system</item>
     </string-array>
+    <string name="title_activity_light_info">LightInfo</string>
 </resources>

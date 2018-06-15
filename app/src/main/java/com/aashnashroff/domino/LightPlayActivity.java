@@ -1,5 +1,6 @@
 package com.aashnashroff.domino;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -185,5 +186,19 @@ public class LightPlayActivity extends AppCompatActivity {
             float pitchFactor = (float) EV;
             sp_play_id = sp.play(sp_id, volumeFactor, volumeFactor,0,-1, pitchFactor);
         }
+    }
+
+    /** Called when the user touches the back button. */
+    public void onClickBack(View view) {
+        Intent intent = new Intent(this, LightInfoActivity.class);
+        startActivity(intent);
+        setContentView(R.layout.activity_light_info);
+    }
+
+    /** Called when the user touches the forward (next) button. */
+    public void onClickForward(View view) {
+        Intent intent = new Intent(this, ChallengeActivity.class);
+        startActivity(intent);
+        setContentView(R.layout.activity_challenge);
     }
 }

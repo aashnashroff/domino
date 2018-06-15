@@ -16,17 +16,18 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     public void startLight(View view) {
-        Intent intent = new Intent(this, ChallengeActivity.class);
+        Intent intent = new Intent(this, LightInfoActivity.class);
 
+        /* this will be useful when we don't hard code front end... sad.
         //passing sensor information to the Challenges Activity page
         intent.putExtra("sensor", "light");
         String[] challenges_names = getResources().getStringArray(R.array.light_challenges_names);
         intent.putExtra("challenges_names", challenges_names);
         String[] challenges_desc = getResources().getStringArray(R.array.light_challenges_descriptions);
-        intent.putExtra("challenges_desc", challenges_desc);
+        */
 
         startActivity(intent);
-        setContentView(R.layout.activity_challenge);
+        setContentView(R.layout.activity_light_info);
     }
 
     public void startAccelerometer(View view) {

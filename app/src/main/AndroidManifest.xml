@@ -21,6 +21,10 @@
         <activity android:name=".LightPlayActivity" />
         <activity android:name=".ChallengeActivity" />
         <activity android:name=".BuildActivity" />
+        <activity
+            android:name=".LightInfoActivity"
+            android:label="@string/title_activity_light_info"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
