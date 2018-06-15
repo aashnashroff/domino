@@ -7,6 +7,7 @@
     android:background="@drawable/build_background_2"
     tools:context=".BuildActivity">
 
+    <!--Disables action button; corresponds to pencil underneath intile-->
     <ImageButton
         android:id="@+id/inTile"
         android:layout_width="100dp"
@@ -18,6 +19,7 @@
         android:padding="@android:dimen/notification_large_icon_width"
         android:paddingLeft="@android:dimen/app_icon_size" />
 
+    <!--Disables sensor button; corresponds to pencil underneath outtile-->
     <ImageButton
         android:id="@+id/outTile"
         android:layout_width="80dp"
@@ -27,6 +29,7 @@
         android:background="@drawable/outtile_2"
         android:onClick="showOutputToolbar" />
 
+    <!--Opens sensor menu and hides action button; top gray button on first screen-->
     <ImageButton
         android:id="@+id/sensorsButton"
         android:layout_width="match_parent"
@@ -35,6 +38,7 @@
         android:onClick="showSensors"
         android:text="Sensors"/>
 
+    <!--Opens action menu and hides sensor button; bottom gray button on first screen-->
     <ImageButton
         android:id="@+id/actionsButton"
         android:layout_width="match_parent"
@@ -44,6 +48,7 @@
         android:onClick="showActions"
         android:text="Actions"/>
 
+    <!--Light sensor button; top gray button after sensorsButton clicked; displays light sensor fields-->
     <ImageButton
         android:id="@+id/lightSensorButton"
         android:layout_width="match_parent"
@@ -53,6 +58,7 @@
         android:text="Light"
         android:visibility="gone"/>
 
+    <!--Flashlight  button; top gray button after actionsButton clicked; displays flashlight fields-->
     <ImageButton
         android:id="@+id/flashlightButton"
         android:layout_width="match_parent"
@@ -62,6 +68,7 @@
         android:text="Flashlight"
         android:visibility="gone"/>
 
+    <!--Test switch/toggle-->
     <Switch
         android:id="@+id/active_toggle"
         android:layout_width="wrap_content"
@@ -71,6 +78,7 @@
         android:padding="10dp"
         android:text="Test" />
 
+    <!--Check app button; hidden unless challengeApp is passed to activity; calls isEqualTo-->
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/completeChallenge"
         android:layout_width="50dp"
@@ -87,6 +95,7 @@
 
     <!--Light sensor popup buttons/fields-->
 
+    <!--Light sensor dropdown-->
     <Spinner xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/operand_spinner"
         android:layout_width="wrap_content"
@@ -95,6 +104,7 @@
         android:layout_marginTop="375dp"
         android:visibility="gone"/>
 
+    <!--Light sensor lux text box-->
     <EditText xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/luxTextBox"
         android:layout_width="80dp"
@@ -104,7 +114,7 @@
         android:ems="10"
         android:visibility="gone"/>
 
-
+    <!--Light sensor save button-->
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/lightButton"
         android:layout_width="50dp"
@@ -121,6 +131,7 @@
 
     <!--Flashlight popup buttons/fields-->
 
+    <!--Flashlight dropdown-->
     <Spinner xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/flashlight_spinner"
         android:layout_width="wrap_content"
@@ -129,6 +140,7 @@
         android:layout_marginTop="375dp"
         android:visibility="gone"/>
 
+    <!--Flashlight duration text box-->
     <EditText xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/durationTextBox"
         android:layout_width="80dp"
@@ -138,6 +150,7 @@
         android:ems="10"
         android:visibility="gone"/>
 
+    <!--Flashlight save button-->
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/flashlightSave"
         android:layout_width="50dp"
