@@ -66,7 +66,11 @@ public class InputTile implements Serializable {
     }
 
     public boolean isEqualTo(InputTile other) {
-        // Fill me in
+        if ((other.getSensor() == this.sensor) &&
+            (other.getChosenValue().equals(this.chosenValue)) &&
+            (other.getOp().equals(this.operand))) {
+            return true;
+        }
         return false;
     }
 }
