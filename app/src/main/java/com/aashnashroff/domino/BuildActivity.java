@@ -246,12 +246,49 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         }
     }
 
+    public void showDefaultButtons(View view) {
+        // Go back to default screen
+        findViewById(R.id.actionsButton).setEnabled(true);
+        findViewById(R.id.sensorsButton).setEnabled(true);
+        findViewById(R.id.actionsButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.sensorsButton).setVisibility(View.VISIBLE);
+
+        // Hide everything else
+        findViewById(R.id.flashlightButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.flashlight_spinner).setVisibility(View.INVISIBLE);
+        findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
+        findViewById(R.id.flashlightSave).setVisibility(View.INVISIBLE);
+        findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.lightButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.luxTextBox).setVisibility(View.INVISIBLE);
+        findViewById(R.id.operand_spinner).setVisibility(View.INVISIBLE);
+    }
+
+    // Could use this as a condition in the below two functions if useful
+    // Depends on how we want button flow to work
+    public boolean showingActionAndSensorButton(View view) {
+        return (findViewById(R.id.actionsButton).isClickable() &&
+                findViewById(R.id.sensorsButton).isClickable());
+    }
+
     public void showInputToolbar(View view) {
-        //TODO: Disable actions button
+        // Disable actions button
+        if (findViewById(R.id.actionsButton).isEnabled()) {
+            findViewById(R.id.actionsButton).setEnabled(false);
+            findViewById(R.id.sensorsButton).setEnabled(true);
+        } else {
+            showDefaultButtons(view);
+        }
     }
 
     public void showOutputToolbar(View view) {
-        //TODO: Disable sensors button
+        // Disable sensors button
+        if (findViewById(R.id.sensorsButton).isEnabled()) {
+            findViewById(R.id.actionsButton).setEnabled(true);
+            findViewById(R.id.sensorsButton).setEnabled(false);
+        } else {
+            showDefaultButtons(view);
+        }
     }
 
     public void showSensors(View view) {
@@ -323,7 +360,10 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         //FIXME: Should probably just show actions bar but this is necessary for testing without x button
         findViewById(R.id.flashlightButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.actionsButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.actionsButton).setEnabled(true);
         findViewById(R.id.sensorsButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.sensorsButton).setEnabled(true);
+
 
         //CHECKING
         FlashlightOutput output = (FlashlightOutput) currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0);
@@ -343,7 +383,9 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         //FIXME: Should probably just show sensors bar but this is necessary for testing without x button
         findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.actionsButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.actionsButton).setEnabled(true);
         findViewById(R.id.sensorsButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.sensorsButton).setEnabled(true);
 
         //CHECKING
         InputTile input = currApp.getChains().get(0).getCEs().get(0).getInputs().get(0);
