@@ -14,9 +14,9 @@
         android:layout_marginLeft="300dp"
         android:layout_marginTop="35dp"
         android:width="0.5dp"
+        android:background="@android:color/transparent"
         android:onClick="onClickForward"
-        android:text=""
-        android:background="@android:color/transparent" />
+        android:text="" />
 
     <Button
         android:id="@+id/backButton"
@@ -25,7 +25,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="35dp"
         android:width="0.5dp"
+        android:background="@android:color/transparent"
         android:onClick="onClickBack"
-        android:text=""
-        android:background="@android:color/transparent" />
+        android:text="" />
 </FrameLayout>

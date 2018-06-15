@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/challenges_roadmap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/light_challenges"
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
+        android:id="@+id/whereButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startPlay"
-        android:text="Play" />
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="365dp"
+        android:width="200dp"
+        android:text=""
+        android:background="@android:color/transparent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
+        android:id="@+id/playButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Where's the sensor?" />
-</LinearLayout>
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="430dp"
+        android:width="200dp"
+        android:text=""
+        android:background="@android:color/transparent" />
+
+</FrameLayout>

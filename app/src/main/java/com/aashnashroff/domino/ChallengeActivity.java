@@ -18,6 +18,7 @@ public class ChallengeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge);
 
+        /*
         //get LinearLayout to display buttons on
         LinearLayout layout = findViewById(R.id.challenges_roadmap);
 
@@ -34,20 +35,21 @@ public class ChallengeActivity extends AppCompatActivity {
                     ViewGroup.LayoutParams.WRAP_CONTENT));
             layout.addView(challenge_button);
         }
+        */
     }
 
-
-    public void setOnClick(Button btn, final String challenge_desc){
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ChallengeActivity.this, BuildActivity.class);
-                intent.putExtra("challenge_desc", challenge_desc);
-                startActivity(intent);
-                setContentView(R.layout.activity_build);
-            }
-        });
-    }
+//
+//    public void setOnClick(Button btn, final String challenge_desc){
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(ChallengeActivity.this, BuildActivity.class);
+//                intent.putExtra("challenge_desc", challenge_desc);
+//                startActivity(intent);
+//                setContentView(R.layout.activity_build);
+//            }
+//        });
+//    }
 
     /** Called when the user touches the play button. */
     public void startPlay(View view) {
@@ -55,6 +57,7 @@ public class ChallengeActivity extends AppCompatActivity {
         startActivity(intent);
         setContentView(R.layout.activity_light_play);
     }
+
 
 
 }
