@@ -87,6 +87,17 @@
         android:text="Congrats! You identified where the light sensor is located— usually on the front face of the phone, near the top!"
         android:textAlignment="center"
         android:textSize="22sp"
-        android:visibility="invisible" />
+        android:visibility="visible" />
+
+    <com.aashnashroff.domino.LatoButton
+        android:id="@+id/latoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="500dp"
+        android:width="300dp"
+        android:background="@android:color/holo_orange_light"
+        android:text="Next Challenge"
+        android:textColor="#FCFCFC" />
 
 </FrameLayout>
