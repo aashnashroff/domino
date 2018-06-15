@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="operand_spinner">
+        <item>=</item>
+        <item>&lt;</item>
+        <item>&gt;</item>
+    </string-array>
+</resources>

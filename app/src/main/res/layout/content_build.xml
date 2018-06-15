@@ -1,17 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".BuildActivity"
-    tools:showIn="@layout/activity_build">
+    android:background="@drawable/build_background_2"
+    tools:context=".BuildActivity">
 
-    <com.aashnashroff.domino.LatoTextView
-        android:id="@+id/challenge_description"
+    <ImageButton
+        android:id="@+id/inTile"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="200dp"
+        android:onClick="showInputToolbar"
+        android:background="@drawable/intile_2"
+        android:padding="@android:dimen/notification_large_icon_width"
+        android:paddingLeft="@android:dimen/app_icon_size" />
+
+    <ImageButton
+        android:id="@+id/outTile"
+        android:layout_width="80dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/outtile_2"
+        android:onClick="showOutputToolbar" />
+
+    <ImageButton
+        android:id="@+id/sensorsButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="0dp"
+        android:onClick="showSensors"
+        android:text="Sensors"/>
+
+    <ImageButton
+        android:id="@+id/actionsButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="50dp"
+        android:onClick="showActions"
+        android:text="Actions"/>
+
+    <ImageButton
+        android:id="@+id/lightSensorButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="0dp"
+        android:onClick="displayLightSensorPopup"
+        android:text="Light"
+        android:visibility="gone"/>
+
+    <ImageButton
+        android:id="@+id/flashlightButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="0dp"
+        android:onClick="displayFlashlightPopup"
+        android:text="Flashlight"
+        android:visibility="gone"/>
+
+    <Switch
+        android:id="@+id/active_toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="135dp" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="440dp"
+        android:padding="10dp"
+        android:text="Test" />
+
+
+    <!--Light sensor popup buttons/fields-->
+
+    <Spinner xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/operand_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="375dp"
+        android:visibility="gone"/>
+
+    <EditText xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/luxTextBox"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="370dp"
+        android:ems="10"
+        android:visibility="gone"/>
+
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/lightButton"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="225dp"
+        android:layout_marginTop="366dp"
+        android:background="@color/colorPrimary"
+        android:onClick="setLightSensor"
+        android:text="Save tile"
+        app:layout_constraintTop_toBottomOf="@id/operand_spinner"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="240dp"
+        android:visibility="gone"/>
+
+    <!--Flashlight popup buttons/fields-->
+    <Spinner xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/flashlight_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="375dp"
+        android:visibility="gone"/>
+
+    <EditText xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/durationTextBox"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="370dp"
+        android:ems="10"
+        android:visibility="gone"/>
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/flashlightSave"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="225dp"
+        android:layout_marginTop="366dp"
+        android:background="@color/colorPrimary"
+        android:onClick="setFlashlightOutput"
+        android:text="Save tile"
+        app:layout_constraintTop_toBottomOf="@id/flashlight_spinner"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="240dp"
+        android:visibility="gone"/>
+
+</FrameLayout>
+

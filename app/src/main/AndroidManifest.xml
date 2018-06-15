@@ -25,10 +25,11 @@
         <activity android:name=".BuildActivity" />
         <activity android:name=".LightInfoActivity" />
         <activity android:name=".WheresTheSensorActivity" />
-        <activity
-            android:name=".Challenge2Activity"
-            android:label="@string/title_activity_challenge2"
-            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".Challenge2Activity" />
+        <service
+            android:name=".LightSensorService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
