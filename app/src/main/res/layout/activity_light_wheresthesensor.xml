@@ -7,7 +7,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_centerHorizontal="true"
-    android:background="@android:color/holo_orange_dark"
+    android:background="@android:color/transparent"
     tools:context=".WheresTheSensorActivity">
 
     <ImageView
@@ -83,7 +83,7 @@
         android:layout_marginTop="320dp"
         android:background="@android:color/holo_orange_light"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="20dp"
+        android:paddingVertical="25dp"
         android:text="Congrats! You identified where the light sensor is located— usually on the front face of the phone, near the top!"
         android:textAlignment="center"
         android:textSize="22sp"
