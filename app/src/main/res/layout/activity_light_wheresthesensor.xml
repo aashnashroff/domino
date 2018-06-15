@@ -7,8 +7,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_centerHorizontal="true"
-    android:background="@android:color/transparent"
-    tools:context=".LightPlayActivity">
+    android:background="@android:color/holo_orange_dark"
+    tools:context=".WheresTheSensorActivity">
 
     <ImageView
         android:layout_width="fill_parent"
@@ -21,10 +21,10 @@
         android:src="@drawable/ic_lightbulb" />
 
     <com.aashnashroff.domino.LatoTextView
-        android:id="@+id/lux_value"
+        android:id="@+id/luxText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="310dp"
         android:gravity="center"
         android:textColor="#FCFCFC"
         android:textSize="40sp" />
@@ -43,13 +43,26 @@
         android:textSize="15sp" />
 
     <com.aashnashroff.domino.LatoTextView
+        android:id="@+id/luxValue"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="360dp"
         android:gravity="center"
         android:text="lux"
         android:textColor="#FCFCFC"
         android:textSize="40sp" />
+
+    <com.aashnashroff.domino.AvenirTextView
+        android:id="@+id/challenge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="230dp"
+        android:text="Wave your finger across the phone to figure out where the light sensor is. Cover it so it becomes close to 0 lux."
+        android:textColor="#FCFCFC"
+        android:textSize="20sp"
+
+        />
 
     <com.aashnashroff.domino.LatoButton
         android:id="@+id/backButton"
@@ -57,32 +70,23 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="45dp"
         android:background="@android:color/transparent"
-        android:onClick="onClickForward"
+        android:onClick="onClickBack"
         android:text="&lt;"
         android:textColor="#FCFCFC"
         android:textSize="35sp" />
 
-    <com.aashnashroff.domino.LatoButton
-        android:id="@+id/forwardButton"
-        android:layout_width="wrap_content"
+    <com.aashnashroff.domino.LatoTextView
+        android:id="@+id/congrats"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="300dp"
-        android:background="@android:color/transparent"
-        android:onClick="onClickBack"
-        android:text="&gt;"
-        android:textColor="#FCFCFC"
-        android:textSize="35sp" />
-
-    <com.aashnashroff.domino.AvenirTextView
-        android:id="@+id/challenge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="200dp"
-        android:text="Wave your finger across the phone to figure out where the light sensor is. Cover it so it becomes close to 0 lux."
-        android:textColor="#FCFCFC"
-        android:textSize="20sp"
-
-        />
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="320dp"
+        android:background="@android:color/holo_orange_light"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="20dp"
+        android:text="Congrats! You identified where the light sensor is located— usually on the front face of the phone, near the top!"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:visibility="invisible" />
 
 </FrameLayout>
