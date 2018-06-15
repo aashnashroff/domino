@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/challenges_roadmap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/light_challenges">
-    <!--android:background="@drawable/light_challenges">-->
+    android:background="@drawable/lightsOut1">
 
     <Button
-        android:id="@+id/playButton"
+        android:id="@+id/sensorsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="55dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="450dp"
         android:width="200dp"
+        android:height="80dp"
         android:background="@android:color/transparent"
-        android:onClick="startPlay"
-        android:text="" />
+        android:text=""
+        android:onClick="showSensors"/>
 
     <Button
-        android:id="@+id/whereButton"
+        android:id="@+id/actionsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="380dp"
-        android:width="220dp"
+        android:text=""
         android:background="@android:color/transparent"
-        android:onClick="WheresTheSensorButton"
-        android:text="" />
-
+        android:layout_marginLeft="190dp"
+        android:layout_marginTop="450dp"
+        android:width="200dp"
+        android:height="80dp"
+        android:clickable="false"/>
 </FrameLayout>

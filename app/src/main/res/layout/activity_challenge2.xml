@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/challenges_roadmap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aashnashroff.domino.Challenge2Activity">
+    android:background="@drawable/challenge2">
+    <!--android:background="@drawable/light_challenges">-->
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_challenge2" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <Button
+        android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="450dp"
+        android:width="200dp"
+        android:background="@android:color/transparent"
+        android:onClick="startPlay"
+        android:text="" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/whereButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="380dp"
+        android:width="220dp"
+        android:background="@android:color/transparent"
+        android:onClick="WheresTheSensorButton"
+        android:text="" />
+
+    <Button
+        android:id="@+id/lightsOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="320dp"
+        android:width="220dp"
+        android:background="@android:color/transparent"
+        android:onClick="LightsOutButton"
+        android:text="" />
+
+</FrameLayout>
