@@ -81,4 +81,9 @@ public class LightSensorService extends Service implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
+
+    public void removeAllConditions() {
+        conditions.clear();
+        sensorManager.unregisterListener(this);
+    }
 }

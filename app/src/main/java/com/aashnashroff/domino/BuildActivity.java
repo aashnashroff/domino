@@ -24,6 +24,8 @@ public class BuildActivity extends AppCompatActivity {
     private Applet currApp;
     LightSensorService lightService;
     boolean mBound = false;
+    boolean appIsOn = false;
+    LightSensorReceiver receiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +49,30 @@ public class BuildActivity extends AppCompatActivity {
         turnOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                for (Chain chain : currApp.getChains()) { // For now, we only allow one chain per app
-                    InputTile condition = chain.start();
-                    sendCondition(chain, condition);
+                if (appIsOn) {
+                    Log.d("STATE", "TURNING OFF");
+                    lightService.removeAllConditions();
+                } else {
+                    for (Chain chain : currApp.getChains()) { // For now, we only allow one chain per app
+                        InputTile condition = chain.start();
+                        sendCondition(chain, condition);
+                    }
                 }
+                appIsOn = !appIsOn;
             }
         });
 
         //FIXME?
         IntentFilter filter = new IntentFilter();
         filter.addAction("done");
-        registerReceiver(new LightSensorReceiver(), filter);
+        receiver = new LightSensorReceiver();
+        registerReceiver(receiver, filter);
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(receiver); //FIXME
+        super.onStop();
     }
 
     private void sendCondition(Chain chain, InputTile condition) {

@@ -17,7 +17,7 @@ public class CauseEffect implements Serializable {
 
         InputTile firstInput = new InputTile();
         //TESTING
-        firstInput.updateChosenVal("20");
+        firstInput.updateChosenVal("100");
         firstInput.updateOperand("<");
         firstInput.updateSensor(Sensor.TYPE_LIGHT);
 
