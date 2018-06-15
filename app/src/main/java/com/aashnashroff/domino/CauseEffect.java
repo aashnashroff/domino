@@ -1,5 +1,7 @@
 package com.aashnashroff.domino;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 public class CauseEffect {
@@ -8,7 +10,8 @@ public class CauseEffect {
     ArrayList<OutputTile> outputs;
 
     public CauseEffect() {
-
+        InputTile firstInput = new InputTile();
+        OutputTile firstOutput = new OutputTile();
     }
 
     /**
@@ -20,5 +23,13 @@ public class CauseEffect {
     public boolean isEqualTo(CauseEffect other) {
         // Fill me in
         return false;
+    }
+
+    public ArrayList<InputTile> getInputs() {
+        return inputs;
+    }
+
+    public ArrayList<OutputTile> getOutputs() {
+        return outputs;
     }
 }

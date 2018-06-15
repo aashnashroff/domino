@@ -1,5 +1,6 @@
 package com.aashnashroff.domino;
 
+import android.app.IntentService;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -7,10 +8,10 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.icu.util.Output;
+import android.os.Binder;
 import android.os.IBinder;
+import android.support.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LightSensorService extends Service implements SensorEventListener {
@@ -18,23 +19,46 @@ public class LightSensorService extends Service implements SensorEventListener {
     SensorManager sensorManager;
     Sensor sensor;
     HashMap<InputTile, Chain> conditions;
-    public LightSensorService() {
+    private final IBinder lightBinder = new LightSensorBinder();
 
+    /**
+     * Class used for the client Binder.  Because we know this service always
+     * runs in the same process as its clients, we don't need to deal with IPC.
+     */
+    public class LightSensorBinder extends Binder {
+        LightSensorService getService() {
+            // Return this instance of LocalService so clients can call public methods
+            return LightSensorService.this;
+        }
+    }
+
+
+    public LightSensorService() {
+//        super("LightSensorService");
+        conditions = new HashMap<InputTile, Chain>();
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-        sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
-
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
+        // TODO: Check if this will get called with every activity that binds to it or just the first
+        // TODO: If this doesn't get called, create public function to add condition to conditions
+        InputTile condition = (InputTile) intent.getSerializableExtra("condition");
+        Chain chain = (Chain) intent.getSerializableExtra("chain");
+        conditions.put(condition, chain);
+        return lightBinder;
     }
 
     @Override
@@ -42,7 +66,11 @@ public class LightSensorService extends Service implements SensorEventListener {
         float currSensorValue = sensorEvent.values[0];
         for (InputTile condition : conditions.keySet()) {
             if (condition.evaluate(currSensorValue)) {
-                conditions.get(condition).receiveSensorSignal(condition);
+                Intent done = new Intent();
+                done.setAction("done");
+                done.putExtra("chain", conditions.get(condition));
+                done.putExtra("condition", condition);
+                sendBroadcast(done);
             }
         }
     }
@@ -50,9 +78,5 @@ public class LightSensorService extends Service implements SensorEventListener {
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
 
-    }
-
-    public void receiveInputCondition(InputTile condition, Chain chain) {
-        conditions.put(condition, chain);
     }
 }

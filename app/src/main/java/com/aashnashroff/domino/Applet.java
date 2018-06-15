@@ -1,5 +1,9 @@
 package com.aashnashroff.domino;
 
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+
 import java.util.ArrayList;
 
 public class Applet {
@@ -7,7 +11,9 @@ public class Applet {
     ArrayList<Chain> chains;
 
     public Applet() {
-
+        chains = new ArrayList<>();
+        Chain startChain = new Chain();
+        chains.add(startChain);
     }
 
     /**
@@ -16,6 +22,10 @@ public class Applet {
 
     public void editApplet() {
 
+    }
+
+    public ArrayList<Chain> getChains() {
+        return chains;
     }
 
     public boolean isEqualTo(Applet other) {

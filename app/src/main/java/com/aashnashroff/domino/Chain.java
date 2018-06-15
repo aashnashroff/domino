@@ -1,16 +1,20 @@
 package com.aashnashroff.domino;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Chain {
+public class Chain implements Serializable{
 
     ArrayList<CauseEffect> ces;
-    CauseEffect currCE;
+    int currCEIndex = 0;
     ArrayList<Boolean> currCEStates;
+    boolean isFinished = false;
 
     public Chain() {
-        currCE = new CauseEffect();
-        ces.add(currCE);
+        ces = new ArrayList<CauseEffect>();
+        CauseEffect firstCE = new CauseEffect();
+        ces.add(firstCE);
     }
 
     /**
@@ -42,20 +46,40 @@ public class Chain {
      * Applet running functions
      */
 
-    public void start() {
-        // TODO: Initialize currCEStates to currCE.getInputs().length() 0s;
+    public InputTile start() {
+        currCEStates = new ArrayList<>(Collections.nCopies(ces.get(currCEIndex).getInputs().size(), false));
+        return ces.get(currCEIndex).getInputs().get(0);
     }
 
-    public void receiveSensorSignal(InputTile condition) {
-        int ceIndex = ces.indexOf(condition);
-        currCEStates.add(ceIndex, true);
-        // If all elements in currCEStates are true
-        // TODO: Determine if above check can just be if (ceIndex == currCEStates.length-1)
-        // TODO: i.e. do the inputs need to be checked linearly
+    public InputTile receivedSensorSignal(InputTile condition) {
+        int inputIndex = ces.get(currCEIndex).getInputs().indexOf(condition);
+        currCEStates.add(inputIndex, true);
+
+        if (inputIndex == (currCEStates.size() - 1)) {
+            return null;
+        }
+        return ces.get(currCEIndex).getInputs().get(inputIndex+1);
+
+        // TODO: Consider how to do this when we start allowing and/or conditions
     }
 
-    public void signalNextInput() {
+    public ArrayList<OutputTile> getOutputs() {
+        ArrayList<OutputTile> outputs = ces.get(currCEIndex).getOutputs();
+        currCEIndex++;
+        if (currCEIndex > ces.size()-1) {
+            isFinished = true;
+        } else {
+            currCEStates = new ArrayList<>(Collections.nCopies(ces.get(currCEIndex).getInputs().size(), false));
+        }
+        return outputs;
+    }
 
+    public boolean checkFinished() {
+        return isFinished;
+    }
+
+    public InputTile startNextCE() {
+        return ces.get(currCEIndex).getInputs().get(0);
     }
 
     //TODO: Consider creating functions for putting and removing ces (for BuildActivity to call)
