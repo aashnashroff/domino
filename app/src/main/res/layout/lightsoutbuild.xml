@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/lightsOut1">
+
+    <Button
+        android:id="@+id/sensorsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="450dp"
+        android:width="200dp"
+        android:height="80dp"
+        android:background="@android:color/transparent"
+        android:text=""
+        android:onClick="showSensors"/>
+
+    <Button
+        android:id="@+id/actionsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:background="@android:color/transparent"
+        android:layout_marginLeft="190dp"
+        android:layout_marginTop="450dp"
+        android:width="200dp"
+        android:height="80dp"
+        android:clickable="false"/>
+</FrameLayout>
