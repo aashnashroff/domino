@@ -18,8 +18,8 @@ public class CauseEffect implements Serializable {
         InputTile firstInput = new InputTile();
 
         inputs.add(firstInput);
-        OutputTile firstOutput = new OutputTile();
-        outputs.add(firstOutput);
+//        OutputTile firstOutput = new OutputTile();
+//        outputs.add(firstOutput);
     }
 
     /**
@@ -27,7 +27,12 @@ public class CauseEffect implements Serializable {
      */
 
     public void setOutput(int index, OutputTile tile) {
+        // TODO: Add check for inbounds index
         outputs.set(index, tile);
+    }
+
+    public void addOutput(OutputTile tile) {
+        outputs.add(tile);
     }
 
     //TODO: Consider functions for grouping tiles into CauseEffect groups from Chain

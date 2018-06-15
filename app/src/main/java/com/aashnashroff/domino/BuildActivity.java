@@ -52,7 +52,6 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     private EditText editDuration;
     String duration;
     boolean forever;
-    String selectedFlash;
 
 //    private static final int CHALLENGE_CODE = 0;
 //
@@ -147,9 +146,9 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
                 String selectedFlash = parent.getItemAtPosition(pos).toString();
                 if (selectedFlash.equals("turns on")) {
                     forever = true;
-                    duration = "10"; // default value
+                    duration = "0"; // default value
                     findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
-                } else if (selectedFlash.equals("blinks")){
+                } else if (selectedFlash.equals("blinks")) {
                     forever = false; // default value
                     findViewById(R.id.durationTextBox).setVisibility(View.VISIBLE);
                 }
@@ -201,7 +200,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
         operand = "=";
-        duration = "10";
+        duration = "0";
         forever = false;
     }
 
@@ -296,9 +295,21 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     public void displayFlashlightPopup(View view) {
         // Set output to new FlashlightOutput with default vals
         // TODO: Figure out a way to get outputTile index rather than just using 0
-        currApp.getChains().get(0).getCEs().get(0).setOutput(0, new FlashlightOutput(10, true, false));
+        OutputTile output = new FlashlightOutput(0, true, false);
+        if (currApp.getChains().get(0).getCEs().get(0).getOutputs().size() == 0) {
+            currApp.getChains().get(0).getCEs().get(0).addOutput(output);
+        } else {
+            output = currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0);
+        }
         findViewById(R.id.flashlight_spinner).setVisibility(View.VISIBLE);
         findViewById(R.id.flashlightSave).setVisibility(View.VISIBLE);
+
+        //TODO: Need to add a check to confirm the output is actually a flashlight output
+        duration = Integer.toString(((FlashlightOutput)output).getDuration());
+        if (Integer.parseInt(duration) != 0) {
+            findViewById(R.id.durationTextBox).setVisibility(View.VISIBLE);
+            ((EditText)findViewById(R.id.durationTextBox)).setText(duration);
+        }
     }
 
     public void setFlashlightOutput(View view) {
