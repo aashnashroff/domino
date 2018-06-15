@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v4.graphics.ColorUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -29,7 +30,7 @@ public class WheresTheSensorActivity extends AppCompatActivity {
     AudioMode audioMode;
 
     LatoTextView textReading;
-    LinearLayout layout;
+    FrameLayout layout;
     LatoButton audioController;
 
     /* Flowing audio state. */
@@ -45,10 +46,10 @@ public class WheresTheSensorActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_light_play);
+        setContentView(R.layout.activity_light_wheresthesensor);
 
         textReading = findViewById(R.id.lux_value);
-        layout = (LinearLayout) findViewById(R.id.play_light_background);
+        layout = findViewById(R.id.play_light_background);
         audioController = (LatoButton) findViewById(R.id.light_play_audio_controller);
 
         /* Set up audio resources. */

@@ -225,9 +225,9 @@ public class LightPlayActivity extends AppCompatActivity {
 
     /** Called when the user touches the forward (next) button. */
     public void onClickForward(View view) {
-        Intent intent = new Intent(this, LightInfoActivity.class);
+        Intent intent = new Intent(this, ChallengeActivity.class);
         startActivity(intent);
-        setContentView(R.layout.activity_light_info);
+        setContentView(R.layout.activity_challenge);
         sensorManager.unregisterListener(lightSensorEventListener);
         stopAudio();
     }

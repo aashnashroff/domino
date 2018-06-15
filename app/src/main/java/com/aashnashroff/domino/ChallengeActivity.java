@@ -53,11 +53,16 @@ public class ChallengeActivity extends AppCompatActivity {
 
     /** Called when the user touches the play button. */
     public void startPlay(View view) {
-        Intent intent = new Intent(this, LightPlayActivity.class);
+        Intent intent = new Intent(this, WheresTheSensorActivity.class);
         startActivity(intent);
-        setContentView(R.layout.activity_light_play);
+        setContentView(R.layout.activity_light_wheresthesensor);
     }
 
-
+    /** Called when the user touches the play button. */
+    public void WheresTheSensorButton(View view) {
+        Intent intent = new Intent(this, WheresTheSensorActivity.class);
+        startActivity(intent);
+        setContentView(R.layout.activity_light_wheresthesensor);
+    }
 
 }

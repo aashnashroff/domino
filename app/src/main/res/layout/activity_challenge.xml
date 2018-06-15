@@ -3,18 +3,8 @@
     android:id="@+id/challenges_roadmap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/light_challenges"
-    android:orientation="vertical">
-
-    <Button
-        android:id="@+id/whereButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="105dp"
-        android:layout_marginTop="365dp"
-        android:width="200dp"
-        android:text=""
-        android:background="@android:color/transparent" />
+    android:background="@drawable/light_challenges">
+    <!--android:background="@drawable/light_challenges">-->
 
     <Button
         android:id="@+id/playButton"
@@ -23,7 +13,19 @@
         android:layout_marginLeft="55dp"
         android:layout_marginTop="430dp"
         android:width="200dp"
-        android:text=""
-        android:background="@android:color/transparent" />
+        android:background="@android:color/transparent"
+        android:onClick="startPlay"
+        android:text="" />
+
+    <Button
+        android:id="@+id/whereButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="365dp"
+        android:width="220dp"
+        android:background="@android:color/transparent"
+        android:onClick="WheresTheSensorButton"
+        android:text="" />
 
 </FrameLayout>
