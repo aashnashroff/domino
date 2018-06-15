@@ -35,6 +35,8 @@ public class WheresTheSensorActivity extends AppCompatActivity {
 
     /* Flowing audio state. */
     MediaPlayer mediaPlayer;
+    SensorManager sensorManager;
+    Sensor lightSensor;
 
     /* Interval audio state. */
     SoundPool sp;
@@ -64,9 +66,9 @@ public class WheresTheSensorActivity extends AppCompatActivity {
         useCorrectAudioBySetting();
 
         /* Register sensor event listener for light to this activity. */
-        SensorManager sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager != null) {
-            Sensor lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+            lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
             if (lightSensor != null) {
                 maxLux = (double) lightSensor.getMaximumRange();
                 sensorManager.registerListener(lightSensorEventListener,
@@ -138,6 +140,8 @@ public class WheresTheSensorActivity extends AppCompatActivity {
                 if (luxValue <= 5) {
                     LatoTextView congratsTextView = findViewById(R.id.congrats);
                     congratsTextView.setVisibility(1);
+                    LatoButton nextChallengeButton = findViewById(R.id.NextChallengeButton);
+                    nextChallengeButton.setVisibility(1);
 
                 }
 
@@ -191,10 +195,32 @@ public class WheresTheSensorActivity extends AppCompatActivity {
         }
     }
 
+    private void stopAudio() {
+        if(mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        sp.stop(sp_play_id);
+
+    }
+
     /** Called when the user touches the back button. */
     public void onClickBack(View view) {
         Intent intent = new Intent(this, ChallengeActivity.class);
         startActivity(intent);
-        setContentView(R.layout.activity_challenge);
+        setContentView(R.layout.activity_light_info);
+        sensorManager.unregisterListener(lightSensorEventListener);
+        stopAudio();
+    }
+
+
+    /** Called when the user completes the challenge and touches the Next Challenge button. */
+    public void onClickNextChallenge(View view) {
+        Intent intent = new Intent(this, Challenge2Activity.class);
+        startActivity(intent);
+        setContentView(R.layout.activity_challenge2);
+        sensorManager.unregisterListener(lightSensorEventListener);
+        stopAudio();
     }
 }

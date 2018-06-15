@@ -19,9 +19,9 @@ public class LightInfoActivity extends AppCompatActivity {
 
     /** Called when the user touches the back button. */
     public void onClickBack(View view) {
-        Intent intent = new Intent(this, PlayActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        setContentView(R.layout.activity_play);
+        setContentView(R.layout.activity_main);
     }
 
     /** Called when the user touches the forward (next) button. */
