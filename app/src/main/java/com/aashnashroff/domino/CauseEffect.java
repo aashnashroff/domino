@@ -16,14 +16,10 @@ public class CauseEffect implements Serializable {
         outputs = new ArrayList<>();
 
         InputTile firstInput = new InputTile();
-        //TESTING
-        firstInput.updateChosenVal("10");
-        firstInput.updateOperand(">");
-        firstInput.updateSensor(Sensor.TYPE_LIGHT);
 
         inputs.add(firstInput);
         OutputTile firstOutput = new OutputTile();
-        firstOutput = new FlashlightOutput(10, true, false);
+        firstOutput = new FlashlightOutput(10, true, true);
         outputs.add(firstOutput);
     }
 

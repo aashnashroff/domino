@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.hardware.Sensor;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.design.widget.FloatingActionButton;
@@ -13,8 +14,15 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Switch;
 
 import java.util.ArrayList;
@@ -25,7 +33,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-public class BuildActivity extends AppCompatActivity {
+public class BuildActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private Applet currApp;
     private Applet challengeApp;
@@ -33,6 +41,12 @@ public class BuildActivity extends AppCompatActivity {
     boolean mBound = false;
     boolean appIsOn = false;
     LightSensorReceiver receiver;
+
+    // LightSensor instance vars
+    // TODO: Should be moved to a separate fragment/component via popup
+    private EditText editLux;
+    String operand;
+    String chosenVal;
 
 //    private static final int CHALLENGE_CODE = 0;
 //
@@ -56,17 +70,6 @@ public class BuildActivity extends AppCompatActivity {
         //TODO: if challengeApp is not null, show Check button
 
         setContentView(R.layout.activity_build);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         currApp = new Applet();
 
@@ -100,6 +103,15 @@ public class BuildActivity extends AppCompatActivity {
         receiver = new LightSensorReceiver();
         registerReceiver(receiver, filter);
 
+        Spinner spinner = findViewById(R.id.operand_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.operand_spinner, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
+        addKeyListener();
+
 
 //        //get challenge description from intent params
 //        Intent intent = getIntent();
@@ -109,6 +121,37 @@ public class BuildActivity extends AppCompatActivity {
 //        //set textview to contain description
 //        TextView desc_textbox = findViewById(R.id.challenge_description);
 //        desc_textbox.setText(challenge_desc);
+    }
+
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        operand = parent.getItemAtPosition(pos).toString();
+        Log.d("STATE", "Set operand to: " + parent.getItemAtPosition(pos).toString());
+    }
+
+    public void addKeyListener() {
+        // Get text box component
+        editLux = findViewById(R.id.luxTextBox);
+
+        // Add a keylistener to keep track user input
+        editLux.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            // if keydown and "enter" is pressed
+            if ((event.getAction() == KeyEvent.ACTION_DOWN)
+                    && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                chosenVal = editLux.getText().toString();
+                Log.d("STATE", "Set chosenVal to: " + editLux.getText().toString());
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(editLux.getWindowToken(), 0);
+                return true;
+            }
+            return false;
+            }
+        });
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        operand = "=";
     }
 
     @Override
@@ -163,6 +206,12 @@ public class BuildActivity extends AppCompatActivity {
 
     public void showSensors(View view) {
         //TODO: Update toolbar to show sensor buttons
+        ImageButton lightSensorButton = findViewById(R.id.lightSensorButton);
+        if (lightSensorButton != null) {
+            lightSensorButton.setVisibility(View.VISIBLE);
+            findViewById(R.id.sensorsButton).setVisibility(View.INVISIBLE);
+            Log.d("STATE", "Showing light sensor");
+        }
     }
 
     public void showActions(View view) {
@@ -176,6 +225,30 @@ public class BuildActivity extends AppCompatActivity {
             // SHOW NEGATIVE MESSAGE
         }
     }
+
+    public void displayLightSensor(View view) {
+        currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateSensor(Sensor.TYPE_LIGHT);
+        findViewById(R.id.lightButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.luxTextBox).setVisibility(View.VISIBLE);
+        findViewById(R.id.operand_spinner).setVisibility(View.VISIBLE);
+    }
+
+
+    public void setLightSensor(View view) {
+        currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateChosenVal(editLux.getText().toString());
+        currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateOperand(operand);
+
+        findViewById(R.id.lightButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.luxTextBox).setVisibility(View.INVISIBLE);
+        findViewById(R.id.operand_spinner).setVisibility(View.INVISIBLE);
+
+        //CHECKING
+        InputTile input = currApp.getChains().get(0).getCEs().get(0).getInputs().get(0);
+        Log.d("STATE", "Created Condition with op: " + input.getOp());
+        Log.d("STATE", "Created Condition with chosenVal: " + input.getChosenValue());
+        Log.d("STATE", "Created Condition with sensor: "+ Double.toString(input.getSensor()));
+    }
+
 
     private ServiceConnection lightConnection = new ServiceConnection() {
 
