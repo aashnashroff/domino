@@ -26,5 +26,5 @@
         android:layout_marginTop="450dp"
         android:width="200dp"
         android:height="80dp"
-        android:clickable="false"/>
+        android:setEnabled="false"/>
 </FrameLayout>
