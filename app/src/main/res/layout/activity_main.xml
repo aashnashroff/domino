@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main"
     tools:context="com.aashnashroff.domino.MainActivity">
 
-    <com.aashnashroff.domino.LatoTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play with sensors!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.245" />
-
     <!--<com.aashnashroff.domino.LatoButton-->
-        <!--android:id="@+id/start-play"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:onClick="startPlay"-->
-        <!--android:text="Play"-->
-        <!--tools:layout_editor_absoluteX="238dp"-->
-        <!--tools:layout_editor_absoluteY="336dp" />-->
+    <!--android:id="@+id/start-play"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:onClick="startPlay"-->
+    <!--android:text="Play"-->
+    <!--tools:layout_editor_absoluteX="238dp"-->
+    <!--tools:layout_editor_absoluteY="336dp" />-->
 
     <com.aashnashroff.domino.LatoButton
         android:id="@+id/start-build"
@@ -35,4 +25,15 @@
         tools:layout_editor_absoluteX="238dp"
         tools:layout_editor_absoluteY="336dp" />
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/lightButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="110dp"
+        android:height="120dp"
+        android:background="@android:color/transparent"
+        android:onClick="startPlay"
+        android:text="" />
+
+</FrameLayout>

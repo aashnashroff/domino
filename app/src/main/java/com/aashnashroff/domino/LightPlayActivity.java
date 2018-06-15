@@ -9,6 +9,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.view.View;
@@ -33,7 +34,7 @@ public class LightPlayActivity extends AppCompatActivity {
     AudioMode audioMode;
 
     LatoTextView textReading;
-    LinearLayout layout;
+    FrameLayout layout;
     LatoButton audioController;
 
     /* Flowing audio state. */
@@ -54,8 +55,8 @@ public class LightPlayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_light_play);
 
-        textReading = findViewById(R.id.lux_value);
-        layout = (LinearLayout) findViewById(R.id.play_light_background);
+        textReading = findViewById(R.id.luxText);
+        layout = findViewById(R.id.play_light_background);
         audioController = (LatoButton) findViewById(R.id.light_play_audio_controller);
 
         /* Set up audio resources. */
