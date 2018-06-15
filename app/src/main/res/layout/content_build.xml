@@ -12,7 +12,7 @@
         android:layout_height="200dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="200dp"
-        android:onClick="openInTilePage"
+        android:onClick="showInputToolbar"
         android:padding="@android:dimen/notification_large_icon_width"
         android:paddingLeft="@android:dimen/app_icon_size" />
 
@@ -22,7 +22,7 @@
         android:layout_height="200dp"
         android:layout_marginLeft="260dp"
         android:layout_marginTop="200dp"
-        android:onClick="openOutTilePage" />
+        android:onClick="showOutputToolbar" />
 
 
     <Switch
@@ -32,6 +32,6 @@
         android:layout_marginLeft="160dp"
         android:layout_marginTop="440dp"
         android:padding="10dp"
-        android:text="On" />
+        android:text="Test" />
 
 </FrameLayout>

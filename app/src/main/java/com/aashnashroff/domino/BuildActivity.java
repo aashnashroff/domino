@@ -22,14 +22,33 @@ import java.util.ArrayList;
 public class BuildActivity extends AppCompatActivity {
 
     private Applet currApp;
+    private Applet challengeApp;
     LightSensorService lightService;
     boolean mBound = false;
     boolean appIsOn = false;
     LightSensorReceiver receiver;
 
+//    private static final int CHALLENGE_CODE = 0;
+//
+//    @Override
+//    /***
+//     * Get challenge app to compare to
+//     */
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == CHALLENGE_CODE) {
+//            Log.d("STATE", "RECEIVED CHALLENGE");
+//            challengeApp = (Applet) data.getSerializableExtra("challenge_app");
+//        }
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        challengeApp = (Applet) getIntent().getSerializableExtra("challenge_app");
+        //TODO: if challengeApp is not null, show Check button
+
         setContentView(R.layout.activity_build);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -118,12 +137,28 @@ public class BuildActivity extends AppCompatActivity {
         }
     }
 
-    public void openInTilePage(View view) {
-        //TODO: Open appropriate build toolbox menu
+    public void showInputToolbar(View view) {
+        //TODO: Disable actions button
     }
 
-    public void openOutTilePage(View view) {
-        //TODO: Open appropriate build toolbox menu
+    public void showOutputToolbar(View view) {
+        //TODO: Disable sensors button
+    }
+
+    public void showSensors(View view) {
+        //TODO: Update toolbar to show sensor buttons
+    }
+
+    public void showActions(View view) {
+        //TODO: Update toolbar to show action buttons
+    }
+
+    public void checkApp(View view) {
+        if (currApp.isEqualTo(challengeApp)) {
+            // SHOW POSITIVE MESSAGE
+        } else {
+            // SHOW NEGATIVE MESSAGE
+        }
     }
 
     private ServiceConnection lightConnection = new ServiceConnection() {
