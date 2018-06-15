@@ -48,6 +48,12 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     String operand;
     String chosenVal;
 
+    //Flashlight instance vars
+    private EditText editDuration;
+    String duration;
+    boolean forever;
+    String selectedFlash;
+
 //    private static final int CHALLENGE_CODE = 0;
 //
 //    @Override
@@ -110,8 +116,16 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        addKeyListener();
+        addLightKeyListener();
 
+        Spinner flashlightSpinner = findViewById(R.id.flashlight_spinner);
+        ArrayAdapter<CharSequence> flashlightAdapter = ArrayAdapter.createFromResource(this,
+                R.array.flashlight_spinner, android.R.layout.simple_spinner_item);
+        flashlightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        flashlightSpinner.setAdapter(flashlightAdapter);
+        flashlightSpinner.setOnItemSelectedListener(this);
+
+        addFlashlightKeyListener();
 
 //        //get challenge description from intent params
 //        Intent intent = getIntent();
@@ -124,11 +138,25 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        operand = parent.getItemAtPosition(pos).toString();
-        Log.d("STATE", "Set operand to: " + parent.getItemAtPosition(pos).toString());
+        switch (parent.getId()) {
+            case R.id.operand_spinner:
+                operand = parent.getItemAtPosition(pos).toString();
+                Log.d("STATE", "Set operand to: " + parent.getItemAtPosition(pos).toString());
+                break;
+            case R.id.flashlight_spinner:
+                String selectedFlash = parent.getItemAtPosition(pos).toString();
+                if (selectedFlash.equals("turns on")) {
+                    forever = true;
+                    duration = "10"; // default value
+                    findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
+                } else if (selectedFlash.equals("blinks")){
+                    forever = false; // default value
+                    findViewById(R.id.durationTextBox).setVisibility(View.VISIBLE);
+                }
+        }
     }
 
-    public void addKeyListener() {
+    public void addLightKeyListener() {
         // Get text box component
         editLux = findViewById(R.id.luxTextBox);
 
@@ -149,9 +177,32 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         });
     }
 
+    public void addFlashlightKeyListener() {
+        // Get text box component
+        editDuration = findViewById(R.id.durationTextBox);
+
+        // Add a keylistener to keep track user input
+        editDuration.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // if keydown and "enter" is pressed
+                if ((event.getAction() == KeyEvent.ACTION_DOWN)
+                        && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    duration = editDuration.getText().toString();
+                    Log.d("STATE", "Set chosenVal to: " + editDuration.getText().toString());
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(editDuration.getWindowToken(), 0);
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
         operand = "=";
+        duration = "10";
+        forever = false;
     }
 
     @Override
@@ -209,6 +260,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         ImageButton lightSensorButton = findViewById(R.id.lightSensorButton);
         if (lightSensorButton != null) {
             lightSensorButton.setVisibility(View.VISIBLE);
+            findViewById(R.id.actionsButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.sensorsButton).setVisibility(View.INVISIBLE);
             Log.d("STATE", "Showing light sensor");
         }
@@ -216,6 +268,13 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
     public void showActions(View view) {
         //TODO: Update toolbar to show action buttons
+        ImageButton flashlightButton = findViewById(R.id.flashlightButton);
+        if (flashlightButton != null) {
+            flashlightButton.setVisibility(View.VISIBLE);
+            findViewById(R.id.actionsButton).setVisibility(View.INVISIBLE);
+            findViewById(R.id.sensorsButton).setVisibility(View.INVISIBLE);
+            Log.d("STATE", "Showing flashlight action");
+        }
     }
 
     public void checkApp(View view) {
@@ -226,11 +285,39 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         }
     }
 
-    public void displayLightSensor(View view) {
+    public void displayLightSensorPopup(View view) {
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateSensor(Sensor.TYPE_LIGHT);
         findViewById(R.id.lightButton).setVisibility(View.VISIBLE);
         findViewById(R.id.luxTextBox).setVisibility(View.VISIBLE);
         findViewById(R.id.operand_spinner).setVisibility(View.VISIBLE);
+    }
+
+
+    public void displayFlashlightPopup(View view) {
+        // Set output to new FlashlightOutput with default vals
+        // TODO: Figure out a way to get outputTile index rather than just using 0
+        currApp.getChains().get(0).getCEs().get(0).setOutput(0, new FlashlightOutput(10, true, false));
+        findViewById(R.id.flashlight_spinner).setVisibility(View.VISIBLE);
+        findViewById(R.id.flashlightSave).setVisibility(View.VISIBLE);
+    }
+
+    public void setFlashlightOutput(View view) {
+        ((FlashlightOutput)currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setDuration(Integer.parseInt(duration));
+        ((FlashlightOutput)currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setForever(forever);
+
+        findViewById(R.id.flashlight_spinner).setVisibility(View.INVISIBLE);
+        findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
+        findViewById(R.id.flashlightSave).setVisibility(View.INVISIBLE);
+
+        //FIXME: Should probably just show actions bar but this is necessary for testing without x button
+        findViewById(R.id.flashlightButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.actionsButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.sensorsButton).setVisibility(View.VISIBLE);
+
+        //CHECKING
+        FlashlightOutput output = (FlashlightOutput) currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0);
+        Log.d("STATE", "Created flashlight with duration: " + Integer.toString(output.getDuration()));
+        Log.d("STATE", "Created flashlight with forever: " + Boolean.toString(output.getForever()));
     }
 
 
@@ -241,6 +328,11 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.lightButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.luxTextBox).setVisibility(View.INVISIBLE);
         findViewById(R.id.operand_spinner).setVisibility(View.INVISIBLE);
+
+        //FIXME: Should probably just show sensors bar but this is necessary for testing without x button
+        findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.actionsButton).setVisibility(View.VISIBLE);
+        findViewById(R.id.sensorsButton).setVisibility(View.VISIBLE);
 
         //CHECKING
         InputTile input = currApp.getChains().get(0).getCEs().get(0).getInputs().get(0);

@@ -8,7 +8,7 @@ import android.util.Log;
 public class FlashlightOutput extends OutputTile {
 
     private int duration;
-    private boolean hasCameraFlash;
+    private boolean hasCameraFlash; //NOT SURE WHAT THIS WAS FOR
     private boolean forever;
 
     public FlashlightOutput(int duration, boolean hasCameraFlash, boolean forever) {
@@ -20,6 +20,18 @@ public class FlashlightOutput extends OutputTile {
 
     public int getDuration() {
         return duration;
+    }
+
+    public void setDuration(int newDuration) {
+        this.duration = newDuration;
+    }
+
+    public boolean getForever() {
+        return forever;
+    }
+
+    public void setForever(boolean newForever) {
+        this.forever = newForever;
     }
 
     public boolean getHasCameraFlash() {

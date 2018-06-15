@@ -19,13 +19,16 @@ public class CauseEffect implements Serializable {
 
         inputs.add(firstInput);
         OutputTile firstOutput = new OutputTile();
-        firstOutput = new FlashlightOutput(10, true, true);
         outputs.add(firstOutput);
     }
 
     /**
      * Editing Applet functions
      */
+
+    public void setOutput(int index, OutputTile tile) {
+        outputs.set(index, tile);
+    }
 
     //TODO: Consider functions for grouping tiles into CauseEffect groups from Chain
 
