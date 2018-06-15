@@ -1,26 +1,23 @@
 package com.aashnashroff.domino;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-import android.view.View;
-
 import android.media.MediaPlayer;
 import android.media.PlaybackParams;
 import android.media.SoundPool;
-
-
+import android.os.Bundle;
 import android.support.v4.graphics.ColorUtils;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
-public class LightPlayActivity extends AppCompatActivity {
+public class WheresTheSensorActivity extends AppCompatActivity {
 
     public enum AudioMode {FLOWING, MUTE, INTERVAL};
 
@@ -33,7 +30,7 @@ public class LightPlayActivity extends AppCompatActivity {
     AudioMode audioMode;
 
     LatoTextView textReading;
-    LinearLayout layout;
+    FrameLayout layout;
     LatoButton audioController;
 
     /* Flowing audio state. */
@@ -45,17 +42,14 @@ public class LightPlayActivity extends AppCompatActivity {
     int sp_play_id;
     float volumeFactor = 0.3f;
 
-    SensorManager sensorManager;
-    Sensor lightSensor;
-
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_light_play);
+        setContentView(R.layout.activity_light_wheresthesensor);
 
-        textReading = findViewById(R.id.lux_value);
-        layout = (LinearLayout) findViewById(R.id.play_light_background);
+        textReading = findViewById(R.id.luxValue);
+        layout = findViewById(R.id.play_light_background);
         audioController = (LatoButton) findViewById(R.id.light_play_audio_controller);
 
         /* Set up audio resources. */
@@ -70,9 +64,9 @@ public class LightPlayActivity extends AppCompatActivity {
         useCorrectAudioBySetting();
 
         /* Register sensor event listener for light to this activity. */
-        sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        SensorManager sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager != null) {
-            lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+            Sensor lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
             if (lightSensor != null) {
                 maxLux = (double) lightSensor.getMaximumRange();
                 sensorManager.registerListener(lightSensorEventListener,
@@ -84,7 +78,7 @@ public class LightPlayActivity extends AppCompatActivity {
 
         /* TODO: test if this works somehow.
          * Display sensor not available error. */
-        Toast.makeText(LightPlayActivity.this,
+        Toast.makeText(WheresTheSensorActivity.this,
                 "Sensor not available.",
                 Toast.LENGTH_LONG).show();
     }
@@ -141,6 +135,12 @@ public class LightPlayActivity extends AppCompatActivity {
                 /* Get sensor value. */
                 luxValue = (double) event.values[0];
 
+                if (luxValue <= 5) {
+                    LatoTextView congratsTextView = findViewById(R.id.congrats);
+                    congratsTextView.setVisibility(1);
+
+                }
+
                 /* Update display with new lux value. */
                 textReading.setText(String.valueOf(luxValue));
 
@@ -152,20 +152,7 @@ public class LightPlayActivity extends AppCompatActivity {
 
             }
         }
-
-        public void onPause()
-        {
-            this.onPause();
-            sensorManager.unregisterListener(this);
-        }
-
-        public void onResume()
-        {
-            this.onResume();
-            sensorManager.registerListener(this, lightSensor ,SensorManager.SENSOR_DELAY_NORMAL);
-        }
     };
-
 
     /**
      * Gets background color based on lux value -- ideally this based on EV values and changes
@@ -204,31 +191,10 @@ public class LightPlayActivity extends AppCompatActivity {
         }
     }
 
-    private void stopAudio() {
-        if(mediaPlayer != null) {
-            mediaPlayer.stop();
-            mediaPlayer.release();
-            mediaPlayer = null;
-        }
-        sp.stop(sp_play_id);
-
-    }
-
     /** Called when the user touches the back button. */
     public void onClickBack(View view) {
-        Intent intent = new Intent(this, LightInfoActivity.class);
-        startActivity(intent);
-        setContentView(R.layout.activity_light_info);
-        sensorManager.unregisterListener(lightSensorEventListener);
-        stopAudio();
-    }
-
-    /** Called when the user touches the forward (next) button. */
-    public void onClickForward(View view) {
         Intent intent = new Intent(this, ChallengeActivity.class);
         startActivity(intent);
         setContentView(R.layout.activity_challenge);
-        sensorManager.unregisterListener(lightSensorEventListener);
-        stopAudio();
     }
 }

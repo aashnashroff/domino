@@ -6,52 +6,77 @@
     android:id="@+id/play_light_background"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
     android:layout_centerHorizontal="true"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
     tools:context=".LightPlayActivity">
 
+    <com.aashnashroff.domino.LatoButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:background="@android:color/transparent"
+        android:onClick="onClickBack"
+        android:text="&lt;"
+        android:textColor="#FCFCFC"
+        android:textSize="35sp" />
+
+    <com.aashnashroff.domino.LatoButton
+        android:id="@+id/forwardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:background="@android:color/transparent"
+        android:onClick="onClickForward"
+        android:text="&gt;"
+        android:textColor="#FCFCFC"
+        android:textSize="35sp" />
+
     <ImageView
-        android:layout_marginTop="40dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_lightbulb"
+        android:layout_marginTop="40dp"
         android:adjustViewBounds="true"
-        android:maxWidth="150dp"
         android:maxHeight="150dp"
-        android:scaleType="fitCenter"/>
+        android:maxWidth="150dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_lightbulb" />
+
+    <com.aashnashroff.domino.AvenirTextView
+        android:id="@+id/avenirTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <com.aashnashroff.domino.LatoTextView
         android:id="@+id/lux_value"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:textColor="#FCFCFC"
-        android:textSize="80sp"
         android:gravity="center"
-        />
+        android:textColor="#FCFCFC"
+        android:textSize="40sp" />
 
     <com.aashnashroff.domino.LatoTextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:gravity="center"
         android:text="lux"
         android:textColor="#FCFCFC"
-        android:textSize="40sp"
-        android:gravity="center"
-        />
+        android:textSize="40sp" />
 
     <com.aashnashroff.domino.LatoButton
         android:id="@+id/light_play_audio_controller"
-        android:onClick="changeAudioSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:layout_gravity="bottom|end"
         android:layout_marginRight="5dp"
+        android:layout_marginTop="100dp"
+        android:background="@android:color/transparent"
+        android:onClick="changeAudioSettings"
         android:text="Mute Audio"
         android:textColor="#FCFCFC"
-        android:layout_gravity="bottom|end"
-        android:background="@android:color/transparent"
-        android:textSize="15sp"
-        />
+        android:textSize="15sp" />
 
 </LinearLayout>
