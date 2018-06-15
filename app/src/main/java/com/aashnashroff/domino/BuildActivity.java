@@ -72,6 +72,9 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
 
         challengeApp = (Applet) getIntent().getSerializableExtra("challenge_app");
+        if (challengeApp != null) {
+            findViewById(R.id.completeChallenge).setVisibility(View.VISIBLE);
+        }
         //TODO: if challengeApp is not null, show Check button
 
         setContentView(R.layout.activity_build);
@@ -79,6 +82,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         currApp = new Applet();
 
         Switch turnOn = findViewById(R.id.active_toggle);
+        //TODO: Show this only if input and output tiles have been set
         turnOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -314,10 +318,12 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void checkApp(View view) {
-        if (currApp.isEqualTo(challengeApp)) {
-            // SHOW POSITIVE MESSAGE
+        String message = currApp.isEqualTo(challengeApp);
+        if (message.equals("Congratulations!")) {
+            // TODO: SHOW POSITIVE MESSAGE with "Congratulations!"
+            // TODO: Send back completed notification to Challenges page
         } else {
-            // SHOW NEGATIVE MESSAGE
+            // TODO: SHOW message string
         }
     }
 

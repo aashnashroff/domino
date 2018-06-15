@@ -49,8 +49,17 @@ public class FlashlightOutput extends OutputTile {
 
     @Override
     public boolean isEqualTo(OutputTile other) {
-        //TODO
-        return super.isEqualTo(other);
+        // If both turn on forever, we're good
+        if (this.forever && ((FlashlightOutput) other).getForever()) {
+            return true;
+        }
+        // If both don't use the forever flag, check duration
+        if (this.forever == ((FlashlightOutput) other).getForever()) {
+            if (this.duration == ((FlashlightOutput) other).getDuration()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

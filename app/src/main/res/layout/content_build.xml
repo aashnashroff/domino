@@ -71,6 +71,19 @@
         android:padding="10dp"
         android:text="Test" />
 
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/completeChallenge"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="225dp"
+        android:layout_marginTop="366dp"
+        android:background="@color/colorPrimary"
+        android:onClick="checkApp"
+        android:text="Check app"
+        app:layout_constraintTop_toBottomOf="@id/active_toggle"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="240dp"
+        android:visibility="gone"/>
 
     <!--Light sensor popup buttons/fields-->
 
@@ -107,6 +120,7 @@
         android:visibility="gone"/>
 
     <!--Flashlight popup buttons/fields-->
+
     <Spinner xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/flashlight_spinner"
         android:layout_width="wrap_content"
