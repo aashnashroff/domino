@@ -88,6 +88,10 @@ public class Chain implements Serializable{
         return ces.get(currCEIndex).getInputs().get(0);
     }
 
+    public ArrayList<CauseEffect> getCEs() {
+        return ces;
+    }
+
     //TODO: Consider creating functions for putting and removing ces (for BuildActivity to call)
     //TODO: Need a lock if the domino is on/you're editing the domino
 }

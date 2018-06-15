@@ -67,12 +67,13 @@ public class LightSensorService extends Service implements SensorEventListener {
         float currSensorValue = sensorEvent.values[0];
         for (InputTile condition : conditions.keySet()) {
             if (condition.evaluate(currSensorValue)) {
+                Log.d("STATE", Float.toString(currSensorValue));
                 Intent done = new Intent();
                 done.setAction("done");
                 done.putExtra("chain", conditions.get(condition));
                 done.putExtra("condition", condition);
+                conditions.remove(condition);
                 sendBroadcast(done);
-                Log.d("STATE", Float.toString(currSensorValue));
             }
         }
     }
@@ -85,5 +86,6 @@ public class LightSensorService extends Service implements SensorEventListener {
     public void removeAllConditions() {
         conditions.clear();
         sensorManager.unregisterListener(this);
+        stopSelf();
     }
 }

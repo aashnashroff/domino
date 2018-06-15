@@ -13,16 +13,18 @@ import java.io.Serializable;
 public class OutputTile implements Serializable {
 
     public OutputTile() {
-
     }
 
     // This should be overwritten
     public void onTrigger(Context context) {
-        System.out.println("No onTrigger method implemented"); //FIXME
-    }
+   }
 
     // This should be overwritten
     public boolean isEqualTo(OutputTile other) {
         return false;
+    }
+
+    // This should be overridden
+    public void turnOff(Context context) {
     }
 }

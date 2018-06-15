@@ -52,6 +52,13 @@ public class BuildActivity extends AppCompatActivity {
                 if (appIsOn) {
                     Log.d("STATE", "TURNING OFF");
                     lightService.removeAllConditions();
+                    for (Chain chain : currApp.getChains()) {
+                        for (CauseEffect ce : chain.getCEs()) {
+                            for (OutputTile output : ce.getOutputs()) {
+                                output.turnOff(getBaseContext());
+                            }
+                        }
+                    }
                 } else {
                     for (Chain chain : currApp.getChains()) { // For now, we only allow one chain per app
                         InputTile condition = chain.start();
