@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/challenges_roadmap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/challenges_1">
+    android:background="@drawable/light_info">
 
     <Button
-        android:id="@+id/whereButton"
+        android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="105dp"
-        android:layout_marginTop="365dp"
-        android:width="200dp"
-        android:text="Button"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="35dp"
+        android:width="0.5dp"
+        android:onClick="onClickBack"
+        android:text=""
         android:visibility="invisible" />
 
     <Button
-        android:id="@+id/playButton"
+        android:id="@+id/forwardButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="55dp"
-        android:layout_marginTop="430dp"
-        android:width="200dp"
-        android:text="Button"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="35dp"
+        android:width="0.5dp"
+        android:onClick="onClickForward"
+        android:text=""
         android:visibility="invisible" />
-
 </FrameLayout>

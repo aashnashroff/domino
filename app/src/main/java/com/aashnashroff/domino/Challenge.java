@@ -24,5 +24,6 @@ public class Challenge {
     }
 
     public void setChallengeSolution() {
+
     }
 }
