@@ -12,6 +12,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -55,7 +56,7 @@ public class BuildActivity extends AppCompatActivity {
 
         //FIXME?
         IntentFilter filter = new IntentFilter();
-        filter.addAction("action");
+        filter.addAction("done");
         registerReceiver(new LightSensorReceiver(), filter);
     }
 
@@ -73,15 +74,20 @@ public class BuildActivity extends AppCompatActivity {
             Chain chain = (Chain) intent.getSerializableExtra("chain");
             InputTile fulfilledCondition = (InputTile) intent.getSerializableExtra("condition");
             InputTile nextCondition = chain.receivedSensorSignal(fulfilledCondition);
+            Log.d("STATE", "Received sensor signal");
             if (nextCondition != null) {
                 sendCondition(chain, nextCondition);
             } else {
+                Log.d("STATE", "Executing outputs");
                 ArrayList<OutputTile> outputs = chain.getOutputs();
                 for (OutputTile output : outputs) {
                     output.onTrigger(getBaseContext());
                 }
                 if (chain.checkFinished()) {
-                    unbindService(lightConnection);
+                    if (mBound) {
+                        unbindService(lightConnection);
+                        mBound = false;
+                    }
                 } else {
                     nextCondition = chain.startNextCE();
                     sendCondition(chain, nextCondition);

@@ -11,6 +11,7 @@ import android.hardware.SensorManager;
 import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import java.util.HashMap;
 
@@ -71,6 +72,7 @@ public class LightSensorService extends Service implements SensorEventListener {
                 done.putExtra("chain", conditions.get(condition));
                 done.putExtra("condition", condition);
                 sendBroadcast(done);
+                Log.d("STATE", Float.toString(currSensorValue));
             }
         }
     }

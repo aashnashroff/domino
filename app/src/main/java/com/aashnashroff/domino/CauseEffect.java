@@ -1,17 +1,29 @@
 package com.aashnashroff.domino;
 
 import android.content.Context;
+import android.hardware.Sensor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CauseEffect {
+public class CauseEffect implements Serializable {
 
     ArrayList<InputTile> inputs;
     ArrayList<OutputTile> outputs;
 
     public CauseEffect() {
+        inputs = new ArrayList<>();
+        outputs = new ArrayList<>();
+
         InputTile firstInput = new InputTile();
+        //TESTING
+        firstInput.updateChosenVal("20");
+        firstInput.updateOperand("<");
+        firstInput.updateSensor(Sensor.TYPE_LIGHT);
+
+        inputs.add(firstInput);
         OutputTile firstOutput = new OutputTile();
+        outputs.add(firstOutput);
     }
 
     /**

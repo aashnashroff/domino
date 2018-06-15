@@ -1,5 +1,7 @@
 package com.aashnashroff.domino;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,9 +54,13 @@ public class Chain implements Serializable{
     }
 
     public InputTile receivedSensorSignal(InputTile condition) {
-        int inputIndex = ces.get(currCEIndex).getInputs().indexOf(condition);
-        currCEStates.add(inputIndex, true);
+        Log.d("STATE", Integer.toString(currCEIndex));
+        // FIXME: indexOf is not finding the condition
+        //int inputIndex = ces.get(currCEIndex).getInputs().indexOf(condition);
+        int inputIndex = 0;
+        currCEStates.set(inputIndex, true);
 
+        Log.d("STATE", "currCEStates: " + Integer.toString(currCEStates.size()));
         if (inputIndex == (currCEStates.size() - 1)) {
             return null;
         }

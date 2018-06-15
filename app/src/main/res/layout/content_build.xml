@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/build_background"
     tools:context=".BuildActivity">
 
     <ImageButton
@@ -13,7 +12,6 @@
         android:layout_height="200dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="200dp"
-        android:background="@drawable/intile"
         android:onClick="openInTilePage"
         android:padding="@android:dimen/notification_large_icon_width"
         android:paddingLeft="@android:dimen/app_icon_size" />
@@ -24,7 +22,6 @@
         android:layout_height="200dp"
         android:layout_marginLeft="260dp"
         android:layout_marginTop="200dp"
-        android:background="@drawable/outtile"
         android:onClick="openOutTilePage" />
 
 
