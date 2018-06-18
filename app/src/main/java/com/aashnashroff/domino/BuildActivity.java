@@ -356,6 +356,11 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void setFlashlightOutput(View view) {
+        duration = editDuration.getText().toString();
+
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editLux.getWindowToken(), 0);
+
         ((FlashlightOutput)currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setDuration(Integer.parseInt(duration));
         ((FlashlightOutput)currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setForever(forever);
 
@@ -379,6 +384,11 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
 
     public void setLightSensor(View view) {
+        chosenVal = editLux.getText().toString();
+
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editLux.getWindowToken(), 0);
+
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateChosenVal(editLux.getText().toString());
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateOperand(operand);
 

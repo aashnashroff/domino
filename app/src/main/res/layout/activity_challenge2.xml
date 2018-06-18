@@ -25,7 +25,7 @@
         android:layout_marginTop="380dp"
         android:width="220dp"
         android:background="@android:color/transparent"
-        android:onClick="WheresTheSensorButton"
+        android:onClick="wheresTheSensorButton"
         android:text="" />
 
     <Button
@@ -36,7 +36,7 @@
         android:layout_marginTop="320dp"
         android:width="220dp"
         android:background="@android:color/transparent"
-        android:onClick="LightsOutButton"
+        android:onClick="lightsOutButton"
         android:text="" />
 
 </FrameLayout>
