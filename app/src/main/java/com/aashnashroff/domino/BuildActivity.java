@@ -49,6 +49,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
     // LightSensor instance vars
     // TODO: Should be moved to a separate fragment/component via popup
+    int sensorType;
     private EditText editLux;
     String operand;
     String chosenVal;
@@ -334,7 +335,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     public void displayLightSensorPopup(View view) {
         findViewById(R.id.active_toggle).setVisibility(View.INVISIBLE);
 
-        currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateSensor(Sensor.TYPE_LIGHT);
+        sensorType = Sensor.TYPE_LIGHT;
         findViewById(R.id.whitebackground).setVisibility(View.VISIBLE);
         findViewById(R.id.lightButton).setVisibility(View.VISIBLE);
         findViewById(R.id.luxTextBox).setVisibility(View.VISIBLE);
@@ -410,8 +411,11 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editLux.getWindowToken(), 0);
 
-        currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateChosenVal(editLux.getText().toString());
+        currApp.getChains().get(0).getCEs().get(0).addInput();
+        currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateChosenVal(chosenVal);
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateOperand(operand);
+        currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateSensor(sensorType);
+
 
         findViewById(R.id.lightButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.luxTextBox).setVisibility(View.INVISIBLE);
