@@ -281,6 +281,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
                 findViewById(R.id.sensorsButton).isClickable());
     }
 
+    // TODO: Once more functionality is added to the toolbar, make this the function called by inTile button
     public void showInputToolbar(View view) {
         // Disable actions button
         if (findViewById(R.id.actionsButton).isEnabled()) {
@@ -291,6 +292,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         }
     }
 
+    // TODO: Once more functionality is added to the toolbar, make this the function called by outTile button
     public void showOutputToolbar(View view) {
         // Disable sensors button
         if (findViewById(R.id.sensorsButton).isEnabled()) {
