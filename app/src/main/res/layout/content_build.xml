@@ -146,10 +146,11 @@
         android:layout_width="191dp"
         android:layout_height="63dp"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="480dp"
+        android:layout_marginTop="490dp"
         android:width="120dp"
         android:height="80dp"
         android:onClick="showSensors"
+        android:background="@android:color/transparent"
         android:text="" />
 
     <!--Opens action menu and hides sensor button; bottom gray button on first screen-->
@@ -179,8 +180,9 @@
         android:layout_width="match_parent"
         android:layout_height="63dp"
         android:layout_marginStart="180dp"
-        android:layout_marginTop="480dp"
+        android:layout_marginTop="490dp"
         android:onClick="showActions"
+        android:background="@android:color/transparent"
         android:text="" />
 
 
