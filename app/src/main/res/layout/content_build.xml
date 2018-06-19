@@ -84,6 +84,7 @@
         android:visibility="gone"
         android:imeOptions="actionDone"
         android:singleLine="true"
+        android:inputType="number"
         />
 
     <!--Light sensor save button-->
@@ -123,6 +124,7 @@
         android:visibility="gone"
         android:imeOptions="actionDone"
         android:singleLine="true"
+        android:inputType="number"
         />
 
     <!--Flashlight save button-->
