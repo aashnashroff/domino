@@ -158,10 +158,11 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
                 Log.d("STATE", "Set operand to: " + parent.getItemAtPosition(pos).toString());
                 break;
             case R.id.flashlight_spinner:
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(editLux.getWindowToken(), 0);
                 String selectedFlash = parent.getItemAtPosition(pos).toString();
                 if (selectedFlash.equals("turns on")) {
                     forever = true;
-                    duration = "0"; // default value
                     findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
                 } else if (selectedFlash.equals("blinks")) {
                     forever = false; // default value
@@ -365,9 +366,15 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
         //TODO: Need to add a check to confirm the output is actually a flashlight output
         duration = Integer.toString(((FlashlightOutput)output).getDuration());
-        if (Integer.parseInt(duration) != 0) {
+        if ((Integer.parseInt(duration) != 0) && (!forever)) {
             findViewById(R.id.durationTextBox).setVisibility(View.VISIBLE);
             ((EditText)findViewById(R.id.durationTextBox)).setText(duration);
+        } else {
+            if (duration.equals("0")) {
+                ((EditText) findViewById(R.id.durationTextBox)).setText("5");
+            } else {
+                ((EditText) findViewById(R.id.durationTextBox)).setText(duration);
+            }
         }
     }
 

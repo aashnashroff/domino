@@ -7,18 +7,6 @@
     android:background="@drawable/main"
     tools:context="com.aashnashroff.domino.MainActivity">
 
-    <!--<com.aashnashroff.domino.LatoButton-->
-    <!--android:id="@+id/start-play"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:onClick="startPlay"-->
-    <!--android:text="Play"-->
-    <!--tools:layout_editor_absoluteX="238dp"-->
-    <!--tools:layout_editor_absoluteY="336dp" />-->
-
-
-    <!--Stops working somewhere between layout_marginTop =275 and =300 -->
-    <!--Gets worse as button gets lower on screen-->
     <com.aashnashroff.domino.LatoButton
         android:id="@+id/start-build"
         android:layout_width="wrap_content"
