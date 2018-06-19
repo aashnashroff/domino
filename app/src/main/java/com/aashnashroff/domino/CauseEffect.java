@@ -14,17 +14,15 @@ public class CauseEffect implements Serializable {
     public CauseEffect() {
         inputs = new ArrayList<>();
         outputs = new ArrayList<>();
-
-        InputTile firstInput = new InputTile();
-
-        inputs.add(firstInput);
-//        OutputTile firstOutput = new OutputTile();
-//        outputs.add(firstOutput);
     }
 
     /**
      * Editing Applet functions
      */
+
+    public void addInput() {
+        inputs.add(new InputTile());
+    }
 
     public void setOutput(int index, OutputTile tile) {
         // TODO: Add check for inbounds index
