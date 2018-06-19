@@ -92,7 +92,11 @@
         android:layout_marginLeft="130dp"
         android:layout_marginTop="370dp"
         android:ems="10"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:inputType="number"
+        />
 
     <!--Light sensor save button-->
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
@@ -128,7 +132,11 @@
         android:layout_marginLeft="130dp"
         android:layout_marginTop="370dp"
         android:ems="10"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:inputType="number"
+        />
 
     <!--Flashlight save button-->
     <Button xmlns:android="http://schemas.android.com/apk/res/android"

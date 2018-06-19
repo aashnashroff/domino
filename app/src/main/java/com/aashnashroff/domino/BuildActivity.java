@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -172,22 +173,16 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         // Get text box component
         editLux = findViewById(R.id.luxTextBox);
 
-        // Add a keylistener to keep track user input
-        editLux.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                Log.d("STATE", Integer.toString(keyCode));
-                Log.d("STATE", Integer.toString(KeyEvent.KEYCODE_ENTER));
-
-            // if keydown and "enter" is pressed
-            if ((event.getAction() == KeyEvent.ACTION_DOWN)
-                    && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                chosenVal = editLux.getText().toString();
-                Log.d("STATE", "Set chosenVal to: " + editLux.getText().toString());
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(editLux.getWindowToken(), 0);
-                return true;
-            }
-            return false;
+        editLux.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    chosenVal = editLux.getText().toString();
+                    Log.d("STATE", "Set chosenVal to: " + editLux.getText().toString());
+                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    return true;
+                }
+                return false;
             }
         });
     }
@@ -196,16 +191,13 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         // Get text box component
         editDuration = findViewById(R.id.durationTextBox);
 
-        // Add a keylistener to keep track user input
-        editDuration.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // if keydown and "enter" is pressed
-                if ((event.getAction() == KeyEvent.ACTION_DOWN)
-                        && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+        editDuration.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
                     duration = editDuration.getText().toString();
                     Log.d("STATE", "Set chosenVal to: " + editDuration.getText().toString());
-                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(editDuration.getWindowToken(), 0);
+                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                     return true;
                 }
                 return false;
