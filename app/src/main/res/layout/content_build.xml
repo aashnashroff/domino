@@ -22,14 +22,24 @@
         android:visibility="gone"
         />
 
-    
+    <ImageView
+        android:id="@+id/flashlight_popup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="0dp"
+        android:src="@drawable/flashlightpopup"
+        android:elevation="0dp"
+        android:visibility="gone"
+        />
+
+
 
     <!--Light sensor button; top gray button after sensorsButton clicked; displays light sensor fields-->
     <ImageButton
         android:id="@+id/lightSensorButton"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="405dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
         android:onClick="displayLightSensorPopup"
         android:background="@drawable/lightsensorbutton"
         android:text="Light"
@@ -39,11 +49,12 @@
     <ImageButton
         android:id="@+id/flashlightButton"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="match_parent"
         android:layout_marginLeft="0dp"
+        android:background="@drawable/actionsbar"
         android:onClick="displayFlashlightPopup"
         android:text="Flashlight"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <!--Test switch/toggle-->
 
