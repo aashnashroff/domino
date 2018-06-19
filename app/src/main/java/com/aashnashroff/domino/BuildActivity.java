@@ -357,6 +357,10 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         }
         findViewById(R.id.flashlight_spinner).setVisibility(View.VISIBLE);
         findViewById(R.id.flashlightSave).setVisibility(View.VISIBLE);
+        findViewById(R.id.flashlight_popup).setVisibility(View.VISIBLE);
+        findViewById(R.id.flashlightButton).setVisibility(View.INVISIBLE);
+        layout.getBackground().setColorFilter(Color.HSVToColor(150, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
+
 
         //TODO: Need to add a check to confirm the output is actually a flashlight output
         duration = Integer.toString(((FlashlightOutput)output).getDuration());
@@ -377,12 +381,14 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         ((FlashlightOutput)currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setDuration(Integer.parseInt(duration));
         ((FlashlightOutput)currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setForever(forever);
 
-        findViewById(R.id.flashlight_spinner).setVisibility(View.INVISIBLE);
+        findViewById(R.id.flashlight_popup).setVisibility(View.INVISIBLE);
         findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlightSave).setVisibility(View.INVISIBLE);
         if (currApp.getChains().get(0).getCEs().get(0).getInputs().size() > 0) {
             findViewById(R.id.active_toggle).setVisibility(View.VISIBLE);
         }
+        findViewById(R.id.flashlight_spinner).setVisibility(View.INVISIBLE);
+        layout.getBackground().setColorFilter(Color.HSVToColor(0, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
 
         //FIXME: Should probably just show actions bar but this is necessary for testing without x button
         findViewById(R.id.flashlightButton).setVisibility(View.INVISIBLE);
@@ -413,6 +419,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         if (currApp.getChains().get(0).getCEs().get(0).getOutputs().size() > 0) {
             findViewById(R.id.active_toggle).setVisibility(View.VISIBLE);
         }
+        layout.getBackground().setColorFilter(Color.HSVToColor(0, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
 
         //FIXME: Should probably just show sensors bar but this is necessary for testing without x button
         findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
@@ -423,6 +430,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.actionsButton).setEnabled(true);
         findViewById(R.id.sensorsButton).setVisibility(View.VISIBLE);
         findViewById(R.id.sensorsButton).setEnabled(true);
+
 
         //CHECKING
         InputTile input = currApp.getChains().get(0).getCEs().get(0).getInputs().get(0);
