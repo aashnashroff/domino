@@ -15,6 +15,7 @@
         android:id="@+id/whitebackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="0dp"
         android:src="@drawable/whitebackground"
         android:elevation="0dp"
         android:visibility="gone"
@@ -134,36 +135,24 @@
         android:id="@+id/outTile"
         android:layout_width="81dp"
         android:layout_height="105dp"
-        android:layout_marginLeft="260dp"
+        android:layout_marginLeft="445dp"
         android:layout_marginTop="200dp"
         android:background="@android:color/transparent"
         android:onClick="showOutputToolbar" />
 
     <!--Opens sensor menu and hides action button; top gray button on first screen-->
-    <Button
+    <ImageButton
         android:id="@+id/sensorsButton"
-        android:layout_width="wrap_content"
+        android:layout_width="191dp"
         android:layout_height="63dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="445dp"
-        android:width="200dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="480dp"
+        android:width="120dp"
         android:height="80dp"
-        android:background="@android:color/transparent"
         android:onClick="showSensors"
         android:text="" />
 
     <!--Opens action menu and hides sensor button; bottom gray button on first screen-->
-    <Button
-        android:id="@+id/actionsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="59dp"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="450dp"
-        android:width="200dp"
-        android:height="80dp"
-        android:background="@android:color/transparent"
-        android:onClick="showActions"
-        android:text="" />
 
     <Switch
         android:id="@+id/active_toggle"
@@ -184,6 +173,15 @@
         android:onClick="showInputToolbar"
         android:padding="@android:dimen/notification_large_icon_width"
         android:paddingLeft="@android:dimen/app_icon_size" />
+
+    <ImageButton
+        android:id="@+id/actionsButton"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="480dp"
+        android:onClick="showActions"
+        android:text="" />
 
 
 </FrameLayout>
