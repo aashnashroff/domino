@@ -356,7 +356,9 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void setFlashlightOutput(View view) {
-        duration = editDuration.getText().toString();
+        if (forever == false) {
+            duration = editDuration.getText().toString();
+        }
 
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editLux.getWindowToken(), 0);
