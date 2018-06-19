@@ -329,9 +329,12 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
     public void displayLightSensorPopup(View view) {
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateSensor(Sensor.TYPE_LIGHT);
+        findViewById(R.id.whitebackground).setVisibility(View.VISIBLE);
         findViewById(R.id.lightButton).setVisibility(View.VISIBLE);
         findViewById(R.id.luxTextBox).setVisibility(View.VISIBLE);
         findViewById(R.id.operand_spinner).setVisibility(View.VISIBLE);
+        findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
+
     }
 
 
@@ -369,6 +372,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.flashlight_spinner).setVisibility(View.INVISIBLE);
         findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlightSave).setVisibility(View.INVISIBLE);
+        findViewById(R.id.active_toggle).setVisibility(View.VISIBLE);
 
         //FIXME: Should probably just show actions bar but this is necessary for testing without x button
         findViewById(R.id.flashlightButton).setVisibility(View.INVISIBLE);
@@ -400,6 +404,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
         //FIXME: Should probably just show sensors bar but this is necessary for testing without x button
         findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.whitebackground).setVisibility(View.INVISIBLE);
         findViewById(R.id.actionsButton).setVisibility(View.VISIBLE);
         findViewById(R.id.actionsButton).setEnabled(true);
         findViewById(R.id.sensorsButton).setVisibility(View.VISIBLE);
