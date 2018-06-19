@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.hardware.Sensor;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -25,6 +27,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.FrameLayout;
+
 
 import java.util.ArrayList;
 
@@ -53,6 +57,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     private EditText editDuration;
     String duration;
     boolean forever;
+    FrameLayout layout;
 
 //    private static final int CHALLENGE_CODE = 0;
 //
@@ -71,6 +76,10 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.content_build);
+
+        layout = findViewById(R.id.lights_out1);
+
 
         challengeApp = (Applet) getIntent().getSerializableExtra("challenge_app");
         if (challengeApp != null) {
@@ -329,7 +338,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.luxTextBox).setVisibility(View.VISIBLE);
         findViewById(R.id.operand_spinner).setVisibility(View.VISIBLE);
         findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
-
+        layout.getBackground().setColorFilter(Color.HSVToColor(150, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
     }
 
 
@@ -400,6 +409,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         //FIXME: Should probably just show sensors bar but this is necessary for testing without x button
         findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.whitebackground).setVisibility(View.INVISIBLE);
+
+
         findViewById(R.id.actionsButton).setVisibility(View.VISIBLE);
         findViewById(R.id.actionsButton).setEnabled(true);
         findViewById(R.id.sensorsButton).setVisibility(View.VISIBLE);
