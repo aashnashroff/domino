@@ -59,7 +59,7 @@ public class ChallengeActivity extends AppCompatActivity {
     }
 
     /** Called when the user touches the Where's the Senor button. */
-    public void WheresTheSensorButton(View view) {
+    public void wheresTheSensorButton(View view) {
         Intent intent = new Intent(this, WheresTheSensorActivity.class);
         startActivity(intent);
         setContentView(R.layout.activity_light_wheresthesensor);
@@ -67,7 +67,7 @@ public class ChallengeActivity extends AppCompatActivity {
 
 
     /** Called when the user touches the Lights Out button. */
-    public void LightsOutButton(View view) {
+    public void lightsOutButton(View view) {
         Intent intent = new Intent(this, Challenge2Activity.class);
         startActivity(intent);
         setContentView(R.layout.activity_challenge2);
