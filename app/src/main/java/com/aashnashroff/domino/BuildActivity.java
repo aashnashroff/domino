@@ -356,6 +356,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     public void checkApp(View view) {
         String message = this.currApp.isEqualTo(this.challengeApp);
         findViewById(R.id.challengeResults).setVisibility(View.VISIBLE);
+        findViewById(R.id.close_popup_button).setVisibility(View.VISIBLE);
         if (message.equals("Congratulations!")) {
             // TODO: SHOW finished button
             // TODO: Send back completed notification to Challenges page
