@@ -276,6 +276,10 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.lightButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.luxTextBox).setVisibility(View.INVISIBLE);
         findViewById(R.id.operand_spinner).setVisibility(View.INVISIBLE);
+        findViewById(R.id.close_popup_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.whitebackground).setVisibility(View.INVISIBLE);
+        findViewById(R.id.flashlight_popup).setVisibility(View.INVISIBLE);
+        layout.getBackground().setColorFilter(Color.HSVToColor(0, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
     }
 
     // Could use this as a condition in the below two functions if useful
@@ -350,6 +354,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
     public void displayLightSensorPopup(View view) {
         findViewById(R.id.active_toggle).setVisibility(View.INVISIBLE);
+        findViewById(R.id.close_popup_button).setVisibility(View.VISIBLE);
 
         sensorType = Sensor.TYPE_LIGHT;
         findViewById(R.id.whitebackground).setVisibility(View.VISIBLE);
@@ -364,13 +369,12 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
     public void displayFlashlightPopup(View view) {
         findViewById(R.id.active_toggle).setVisibility(View.INVISIBLE);
+        findViewById(R.id.close_popup_button).setVisibility(View.VISIBLE);
 
         // Set output to new FlashlightOutput with default vals
         // TODO: Figure out a way to get outputTile index rather than just using 0
         OutputTile output = new FlashlightOutput(0, true, false);
-        if (currApp.getChains().get(0).getCEs().get(0).getOutputs().size() == 0) {
-            currApp.getChains().get(0).getCEs().get(0).addOutput(output);
-        } else {
+        if (currApp.getChains().get(0).getCEs().get(0).getOutputs().size() != 0) {
             output = currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0);
         }
         findViewById(R.id.flashlight_spinner).setVisibility(View.VISIBLE);
@@ -403,10 +407,15 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editLux.getWindowToken(), 0);
 
-        ((FlashlightOutput)currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setDuration(Integer.parseInt(duration));
-        ((FlashlightOutput)currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setForever(forever);
+        if (currApp.getChains().get(0).getCEs().get(0).getOutputs().size() == 0) {
+            currApp.getChains().get(0).getCEs().get(0).addOutput(new FlashlightOutput(Integer.parseInt(duration), true, forever));
+        } else {
+            ((FlashlightOutput) currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setDuration(Integer.parseInt(duration));
+            ((FlashlightOutput) currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setForever(forever);
+        }
         findViewById(R.id.flashlighticon).setVisibility(View.VISIBLE);
 
+        findViewById(R.id.close_popup_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlight_popup).setVisibility(View.INVISIBLE);
         findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
         findViewById(R.id.durationTextBoxLabel).setVisibility(View.INVISIBLE);
@@ -444,6 +453,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateSensor(sensorType);
         findViewById(R.id.lightbulbicon).setVisibility(View.VISIBLE);
 
+        findViewById(R.id.close_popup_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.lightButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.luxTextBox).setVisibility(View.INVISIBLE);
         findViewById(R.id.operand_spinner).setVisibility(View.INVISIBLE);

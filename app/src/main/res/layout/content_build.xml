@@ -48,6 +48,16 @@
         android:visibility="gone"
         />
 
+    <Button
+        android:id="@+id/close_popup_button"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="215dp"
+        android:background="@android:color/transparent"
+        android:visibility="gone"
+        android:onClick="showDefaultButtons"
+        />
 
     <!--Light sensor button; displays light sensor fields-->
     <ImageButton
@@ -55,7 +65,7 @@
         android:layout_width="80dp"
         android:layout_height="92dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="410dp"
+        android:layout_marginTop="430dp"
         android:background="@android:color/transparent"
         android:onClick="displayLightSensorPopup"
         android:text="Light"
@@ -68,7 +78,7 @@
         android:layout_width="80dp"
         android:layout_height="92dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="410dp"
+        android:layout_marginTop="430dp"
         android:background="@android:color/transparent"
         android:onClick="displayFlashlightPopup"
         android:text="Flashlight"
@@ -276,7 +286,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="115dp"
-        android:layout_marginTop="580dp"
+        android:layout_marginTop="570dp"
         android:height="80dp"
         android:background="@android:color/transparent"
         android:onClick="startPlay"
