@@ -226,7 +226,7 @@
         android:padding="@android:dimen/notification_large_icon_width"
         android:paddingLeft="@android:dimen/app_icon_size" />
 
-
+    <!--Save Tile for the Flashlight/Output popup-->
     <Button
         android:id="@+id/flashlightSave"
         android:layout_width="wrap_content"
@@ -241,6 +241,24 @@
         app:layout_constraintTop_toBottomOf="@id/flashlight_spinner"
         android:visibility="gone"
         />
+
+    <!--Icon for Lightbulb on Intile once inputted-->
+    <ImageView
+        android:id="@+id/lightbulbicon"
+        android:layout_width="36dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="240dp"
+        android:background="@drawable/lightbulb" />
+
+    <!--Icon for Flashlight on OutTile once inputted-->
+    <ImageView
+        android:id="@+id/flashlighticon"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="240dp"
+        android:background="@drawable/flashlight" />
 
 </FrameLayout>
 
