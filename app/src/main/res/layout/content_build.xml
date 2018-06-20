@@ -154,7 +154,7 @@
         android:imeOptions="actionDone"
         android:singleLine="true"
         android:inputType="number"
-        android:text="      sec"
+        android:text="sec"
         android:visibility="gone"
         />
 
