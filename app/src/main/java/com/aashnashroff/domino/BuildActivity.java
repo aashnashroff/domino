@@ -155,7 +155,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         switch (parent.getId()) {
             case R.id.operand_spinner:
                 operand = parent.getItemAtPosition(pos).toString();
-                Log.d("STATE", "Set operand to: " + parent.getItemAtPosition(pos).toString());
+//                Log.d("STATE", "Set operand to: " + parent.getItemAtPosition(pos).toString());
                 break;
             case R.id.flashlight_spinner:
                 InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -180,7 +180,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     chosenVal = editLux.getText().toString();
-                    Log.d("STATE", "Set chosenVal to: " + editLux.getText().toString());
+//                    Log.d("STATE", "Set chosenVal to: " + editLux.getText().toString());
                     InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                     return true;
@@ -198,7 +198,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     duration = editDuration.getText().toString();
-                    Log.d("STATE", "Set chosenVal to: " + editDuration.getText().toString());
+//                    Log.d("STATE", "Set chosenVal to: " + editDuration.getText().toString());
                     InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                     return true;
@@ -335,7 +335,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             findViewById(R.id.flashlightButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.actionsButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.sensorsButton).setVisibility(View.INVISIBLE);
-            Log.d("STATE", "Showing light sensor");
+//            Log.d("STATE", "Showing light sensor");
         }
     }
 
@@ -349,7 +349,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.actionsButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.sensorsButton).setVisibility(View.INVISIBLE);
-            Log.d("STATE", "Showing flashlight action");
+//            Log.d("STATE", "Showing flashlight action");
         }
     }
 
@@ -459,8 +459,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
         //CHECKING
         FlashlightOutput output = (FlashlightOutput) currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0);
-        Log.d("STATE", "Created flashlight with duration: " + Integer.toString(output.getDuration()));
-        Log.d("STATE", "Created flashlight with forever: " + Boolean.toString(output.getForever()));
+//        Log.d("STATE", "Created flashlight with duration: " + Integer.toString(output.getDuration()));
+//        Log.d("STATE", "Created flashlight with forever: " + Boolean.toString(output.getForever()));
     }
 
 
@@ -499,9 +499,9 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
         //CHECKING
         InputTile input = currApp.getChains().get(0).getCEs().get(0).getInputs().get(0);
-        Log.d("STATE", "Created Condition with op: " + input.getOp());
-        Log.d("STATE", "Created Condition with chosenVal: " + input.getChosenValue());
-        Log.d("STATE", "Created Condition with sensor: "+ Double.toString(input.getSensor()));
+//        Log.d("STATE", "Created Condition with op: " + input.getOp());
+//        Log.d("STATE", "Created Condition with chosenVal: " + input.getChosenValue());
+//        Log.d("STATE", "Created Condition with sensor: "+ Double.toString(input.getSensor()));
     }
 
 
@@ -523,7 +523,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
     /** Called when the user touches the play button. */
     public void startPlay(View view) {
-        Log.d("STATE", "Play button pressed");
+//        Log.d("STATE", "Play button pressed");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         setContentView(R.layout.activity_main);
