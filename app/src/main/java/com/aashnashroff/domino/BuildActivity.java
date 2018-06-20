@@ -167,6 +167,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
                 } else if (selectedFlash.equals("blinks for")) {
                     forever = false; // default value
                     findViewById(R.id.durationTextBox).setVisibility(View.VISIBLE);
+                    findViewById(R.id.durationTextBoxLabel).setVisibility(View.VISIBLE);
                 }
         }
     }
@@ -268,6 +269,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.actions_image).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlight_spinner).setVisibility(View.INVISIBLE);
         findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
+        findViewById(R.id.durationTextBoxLabel).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlightSave).setVisibility(View.INVISIBLE);
         findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.sensors_image).setVisibility(View.INVISIBLE);
@@ -403,6 +405,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
         findViewById(R.id.flashlight_popup).setVisibility(View.INVISIBLE);
         findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
+        findViewById(R.id.durationTextBoxLabel).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlightSave).setVisibility(View.INVISIBLE);
         if (currApp.getChains().get(0).getCEs().get(0).getInputs().size() > 0) {
             findViewById(R.id.active_toggle).setVisibility(View.VISIBLE);

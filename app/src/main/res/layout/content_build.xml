@@ -148,11 +148,22 @@
         android:layout_marginLeft="190dp"
         android:layout_marginTop="370dp"
         android:ems="10"
-        android:elevation="10dp"
         android:imeOptions="actionDone"
         android:singleLine="true"
         android:inputType="number"
-        android:text="  sec"
+        android:visibility="gone"
+        />
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/durationTextBoxLabel"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="380dp"
+        android:ems="30"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:text="sec"
         android:visibility="gone"
         />
 
