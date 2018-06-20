@@ -50,13 +50,13 @@
 
     <Button
         android:id="@+id/close_popup_button"
-        android:layout_width="35dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="215dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="213dp"
         android:background="@android:color/transparent"
-        android:visibility="gone"
         android:onClick="showDefaultButtons"
+        android:visibility="gone"
         />
 
     <!--Light sensor button; displays light sensor fields-->
