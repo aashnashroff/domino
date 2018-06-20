@@ -183,7 +183,7 @@
     <ImageButton
         android:id="@+id/sensorsButton"
         android:layout_width="191dp"
-        android:layout_height="63dp"
+        android:layout_height="65dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="490dp"
         android:width="120dp"
@@ -196,7 +196,7 @@
     <ImageButton
         android:id="@+id/actionsButton"
         android:layout_width="match_parent"
-        android:layout_height="63dp"
+        android:layout_height="65dp"
         android:layout_marginStart="180dp"
         android:layout_marginTop="490dp"
         android:onClick="showActions"
@@ -226,7 +226,7 @@
         android:padding="@android:dimen/notification_large_icon_width"
         android:paddingLeft="@android:dimen/app_icon_size" />
 
-
+    <!--Save Tile for the Flashlight/Output popup-->
     <Button
         android:id="@+id/flashlightSave"
         android:layout_width="wrap_content"
@@ -248,6 +248,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
+
+    <!--Icon for Lightbulb on Intile once inputted-->
+    <ImageView
+        android:id="@+id/lightbulbicon"
+        android:layout_width="36dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="240dp"
+        android:background="@drawable/lightbulb" />
+
+    <!--Icon for Flashlight on OutTile once inputted-->
+    <ImageView
+        android:id="@+id/flashlighticon"
+        android:layout_width="43dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="251dp"
+        android:layout_marginTop="240dp"
+        android:background="@drawable/flashlight" />
 
 </FrameLayout>
 

@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="390dp"
         android:width="220dp"
         android:background="@android:color/transparent"
         android:onClick="wheresTheSensorButton"
