@@ -125,13 +125,14 @@
         android:id="@+id/durationTextBox"
         android:layout_width="60dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="180dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="370dp"
         android:ems="10"
         android:imeOptions="actionDone"
         android:singleLine="true"
         android:inputType="number"
         android:text="      sec"
+        android:visibility="gone"
         />
 
     <!--Flashlight save button-->
