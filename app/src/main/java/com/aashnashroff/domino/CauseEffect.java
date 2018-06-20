@@ -24,6 +24,10 @@ public class CauseEffect implements Serializable {
         inputs.add(new InputTile());
     }
 
+    public void addGivenInput(InputTile input) {
+        inputs.add(input);
+    }
+
     public void setOutput(int index, OutputTile tile) {
         // TODO: Add check for inbounds index
         outputs.set(index, tile);

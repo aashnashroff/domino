@@ -19,9 +19,19 @@ public class Chain implements Serializable{
         ces.add(firstCE);
     }
 
+    public Chain(CauseEffect firstCE) {
+        ces = new ArrayList<CauseEffect>();
+        ces.add(firstCE);
+    }
+
+
     /**
      * Editing Applet functions
      */
+
+    public void addCauseEffect(CauseEffect ce) {
+        ces.add(ce);
+    }
 
     public void addCauseTile() {
 

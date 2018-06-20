@@ -80,15 +80,15 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         setContentView(R.layout.content_build);
 
         layout = findViewById(R.id.lights_out1);
+        setContentView(R.layout.activity_build);
 
-
+        //If challengeApp is not null, show Check button
         challengeApp = (Applet) getIntent().getSerializableExtra("challenge_app");
         if (challengeApp != null) {
+//            Log.d("STATE", "has challenge app");
+//            Log.d("STATE", Integer.toString(challengeApp.getChains().size()));
             findViewById(R.id.completeChallenge).setVisibility(View.VISIBLE);
         }
-        //TODO: if challengeApp is not null, show Check button
-
-        setContentView(R.layout.activity_build);
 
         currApp = new Applet();
 
@@ -336,12 +336,15 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void checkApp(View view) {
-        String message = currApp.isEqualTo(challengeApp);
+        String message = this.currApp.isEqualTo(this.challengeApp);
+        findViewById(R.id.challengeResults).setVisibility(View.VISIBLE);
         if (message.equals("Congratulations!")) {
-            // TODO: SHOW POSITIVE MESSAGE with "Congratulations!"
+            // TODO: SHOW finished button
             // TODO: Send back completed notification to Challenges page
+            ((TextView) findViewById(R.id.challengeResults)).setText(message);
         } else {
-            // TODO: SHOW message string
+            // TODO: Show close button for popup
+            ((TextView) findViewById(R.id.challengeResults)).setText(message);
         }
     }
 

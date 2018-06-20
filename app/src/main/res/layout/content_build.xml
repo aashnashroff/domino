@@ -242,5 +242,12 @@
         android:visibility="gone"
         />
 
+    <TextView
+        android:id="@+id/challengeResults"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
 </FrameLayout>
 
