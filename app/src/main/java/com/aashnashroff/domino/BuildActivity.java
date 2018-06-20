@@ -281,6 +281,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.close_popup_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.whitebackground).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlight_popup).setVisibility(View.INVISIBLE);
+        findViewById(R.id.challengeResults).setVisibility(View.INVISIBLE);
+        findViewById(R.id.challengeResultsPopup).setVisibility(View.INVISIBLE);
         layout.getBackground().setColorFilter(Color.HSVToColor(0, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
 
         boolean hasInputs = false;
@@ -372,6 +374,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void displayLightSensorPopup(View view) {
+        findViewById(R.id.completeChallenge).setVisibility(View.INVISIBLE);
+        findViewById(R.id.completeChallengeText).setVisibility(View.INVISIBLE);
         findViewById(R.id.active_toggle).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlighticon).setVisibility(View.INVISIBLE);
         findViewById(R.id.lightbulbicon).setVisibility(View.INVISIBLE);
@@ -389,6 +393,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
 
     public void displayFlashlightPopup(View view) {
+        findViewById(R.id.completeChallenge).setVisibility(View.INVISIBLE);
+        findViewById(R.id.completeChallengeText).setVisibility(View.INVISIBLE);
         findViewById(R.id.active_toggle).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlighticon).setVisibility(View.INVISIBLE);
         findViewById(R.id.lightbulbicon).setVisibility(View.INVISIBLE);
@@ -441,6 +447,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             ((FlashlightOutput) currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setForever(forever);
         }
         findViewById(R.id.flashlighticon).setVisibility(View.VISIBLE);
+        findViewById(R.id.completeChallenge).setVisibility(View.VISIBLE);
+        findViewById(R.id.completeChallengeText).setVisibility(View.VISIBLE);
 
         findViewById(R.id.close_popup_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlight_popup).setVisibility(View.INVISIBLE);
@@ -480,7 +488,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateOperand(operand);
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateSensor(sensorType);
         findViewById(R.id.lightbulbicon).setVisibility(View.VISIBLE);
-
+        findViewById(R.id.completeChallenge).setVisibility(View.VISIBLE);
+        findViewById(R.id.completeChallengeText).setVisibility(View.VISIBLE);
         findViewById(R.id.close_popup_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.lightButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.luxTextBox).setVisibility(View.INVISIBLE);
