@@ -311,6 +311,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         if (lightSensorButton != null) {
             lightSensorButton.setVisibility(View.VISIBLE);
             findViewById(R.id.sensors_image).setVisibility(View.VISIBLE);
+            findViewById(R.id.actions_image).setVisibility(View.INVISIBLE);
+            findViewById(R.id.flashlightButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.actionsButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.sensorsButton).setVisibility(View.INVISIBLE);
             Log.d("STATE", "Showing light sensor");
@@ -323,6 +325,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         if (flashlightButton != null) {
             flashlightButton.setVisibility(View.VISIBLE);
             findViewById(R.id.actions_image).setVisibility(View.VISIBLE);
+            findViewById(R.id.sensors_image).setVisibility(View.INVISIBLE);
+            findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.actionsButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.sensorsButton).setVisibility(View.INVISIBLE);
             Log.d("STATE", "Showing flashlight action");
@@ -445,8 +449,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.sensors_image).setVisibility(View.INVISIBLE);
         findViewById(R.id.whitebackground).setVisibility(View.INVISIBLE);
-
-
+        
         findViewById(R.id.actionsButton).setVisibility(View.VISIBLE);
         findViewById(R.id.actionsButton).setEnabled(true);
         findViewById(R.id.sensorsButton).setVisibility(View.VISIBLE);
