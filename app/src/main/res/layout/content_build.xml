@@ -254,9 +254,9 @@
     <!--Icon for Flashlight on OutTile once inputted-->
     <ImageView
         android:id="@+id/flashlighticon"
-        android:layout_width="45dp"
+        android:layout_width="43dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="250dp"
+        android:layout_marginLeft="251dp"
         android:layout_marginTop="240dp"
         android:background="@drawable/flashlight" />
 
