@@ -2,6 +2,6 @@
 <resources>
     <string-array name="flashlight_spinner">
         <item>turns on</item>
-        <item>blinks</item>
+        <item>blinks for</item>
     </string-array>
 </resources>

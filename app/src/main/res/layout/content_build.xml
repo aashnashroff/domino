@@ -97,7 +97,7 @@
         android:id="@+id/operand_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="70dp"
+        android:layout_marginLeft="110dp"
         android:layout_marginTop="375dp"
         android:visibility="gone"/>
 
@@ -106,7 +106,7 @@
         android:id="@+id/luxTextBox"
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="130dp"
+        android:layout_marginLeft="170dp"
         android:layout_marginTop="370dp"
         android:ems="10"
         android:visibility="gone"
@@ -118,17 +118,16 @@
     <!--Light sensor save button-->
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/lightButton"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="225dp"
-        android:layout_marginTop="366dp"
-        android:background="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="420dp"
+        android:background="@drawable/buttonshape"
         android:onClick="setLightSensor"
         android:text="Save tile"
         app:layout_constraintTop_toBottomOf="@id/operand_spinner"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="240dp"
         android:visibility="gone"/>
+
 
     <!--Flashlight popup buttons/fields-->
 
@@ -144,31 +143,20 @@
     <!--Flashlight duration text box-->
     <EditText xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/durationTextBox"
-        android:layout_width="80dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="130dp"
+        android:layout_marginLeft="190dp"
         android:layout_marginTop="370dp"
         android:ems="10"
-        android:visibility="gone"
+        android:elevation="10dp"
         android:imeOptions="actionDone"
         android:singleLine="true"
         android:inputType="number"
+        android:text="  sec"
+        android:visibility="gone"
         />
 
     <!--Flashlight save button-->
-    <Button xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/flashlightSave"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="225dp"
-        android:layout_marginTop="366dp"
-        android:background="@color/colorPrimary"
-        android:onClick="setFlashlightOutput"
-        android:text="Save tile"
-        app:layout_constraintTop_toBottomOf="@id/flashlight_spinner"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="240dp"
-        android:visibility="gone"/>
 
     <!--Opens action menu and hides sensor button; bottom gray button on first screen-->
     <ImageButton
@@ -227,6 +215,21 @@
         android:padding="@android:dimen/notification_large_icon_width"
         android:paddingLeft="@android:dimen/app_icon_size" />
 
+
+    <Button
+        android:id="@+id/flashlightSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="420dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="setFlashlightOutput"
+        android:text="Save tile"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/flashlight_spinner"
+        android:visibility="gone"
+        />
 
 </FrameLayout>
 
