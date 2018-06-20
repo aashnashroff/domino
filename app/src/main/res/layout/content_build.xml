@@ -139,7 +139,7 @@
         android:id="@+id/flashlight_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="70dp"
         android:layout_marginTop="375dp"
         android:visibility="gone"/>
 
@@ -148,13 +148,14 @@
         android:id="@+id/durationTextBox"
         android:layout_width="60dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="200dp"
+        android:layout_marginLeft="190dp"
         android:layout_marginTop="370dp"
         android:ems="10"
+        android:elevation="10dp"
         android:imeOptions="actionDone"
         android:singleLine="true"
         android:inputType="number"
-        android:text="sec"
+        android:text="  sec"
         android:visibility="gone"
         />
 

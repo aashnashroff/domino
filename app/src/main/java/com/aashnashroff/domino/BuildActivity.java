@@ -164,7 +164,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
                 if (selectedFlash.equals("turns on")) {
                     forever = true;
                     findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
-                } else if (selectedFlash.equals("blinks")) {
+                } else if (selectedFlash.equals("blinks for")) {
                     forever = false; // default value
                     findViewById(R.id.durationTextBox).setVisibility(View.VISIBLE);
                 }
