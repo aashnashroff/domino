@@ -22,6 +22,26 @@
         />
 
     <ImageView
+        android:id="@+id/actions_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="0dp"
+        android:src="@drawable/actionsbar"
+        android:elevation="0dp"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/sensors_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="0dp"
+        android:src="@drawable/lightsensorbutton"
+        android:elevation="0dp"
+        android:visibility="gone"
+        />
+
+    <ImageView
         android:id="@+id/flashlight_popup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,28 +52,31 @@
         />
 
 
-    <!--Light sensor button; top gray button after sensorsButton clicked; displays light sensor fields-->
+    <!--Light sensor button; displays light sensor fields-->
     <ImageButton
         android:id="@+id/lightSensorButton"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
+        android:layout_width="101dp"
+        android:layout_height="92dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="400dp"
         android:onClick="displayLightSensorPopup"
-        android:background="@drawable/lightsensorbutton"
+        android:background="@android:color/transparent"
         android:text="Light"
         android:visibility="gone"
         />
 
-    <!--Flashlight  button; top gray button after actionsButton clicked; displays flashlight fields-->
+    <!--Flashlight button; displays flashlight fields-->
     <ImageButton
         android:id="@+id/flashlightButton"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="0dp"
-        android:background="@drawable/actionsbar"
+        android:layout_width="101dp"
+        android:layout_height="92dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="400dp"
+        android:background="@android:color/transparent"
         android:onClick="displayFlashlightPopup"
         android:text="Flashlight"
-        android:visibility="gone" />
+        android:visibility="gone"
+        />
 
     <!--Check app button; hidden unless challengeApp is passed to activity; calls isEqualTo-->
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
@@ -147,7 +170,7 @@
         android:background="@android:color/transparent"
         android:onClick="showActions" />
 
-    <!--Opens sensor menu and hides action button; top gray button on first screen-->
+    <!--Opens sensor menu and hides action button-->
     <ImageButton
         android:id="@+id/sensorsButton"
         android:layout_width="191dp"
@@ -157,6 +180,17 @@
         android:width="120dp"
         android:height="80dp"
         android:onClick="showSensors"
+        android:background="@android:color/transparent"
+        android:text="" />
+
+    <!--Opens actions menu and hides sensor button-->
+    <ImageButton
+        android:id="@+id/actionsButton"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="490dp"
+        android:onClick="showActions"
         android:background="@android:color/transparent"
         android:text="" />
 
@@ -183,15 +217,6 @@
         android:padding="@android:dimen/notification_large_icon_width"
         android:paddingLeft="@android:dimen/app_icon_size" />
 
-    <ImageButton
-        android:id="@+id/actionsButton"
-        android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="490dp"
-        android:onClick="showActions"
-        android:background="@android:color/transparent"
-        android:text="" />
 
     <Button
         android:id="@+id/flashlightSave"
@@ -207,7 +232,6 @@
         app:layout_constraintTop_toBottomOf="@id/flashlight_spinner"
         android:visibility="gone"
         />
-
 
 </FrameLayout>
 
