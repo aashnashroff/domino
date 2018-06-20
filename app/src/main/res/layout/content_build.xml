@@ -16,10 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="0dp"
-        android:src="@drawable/whitebackground"
         android:elevation="0dp"
-        android:visibility="gone"
-        />
+        android:src="@drawable/whitebackground"
+        android:visibility="gone" />
 
     <ImageButton
         android:id="@+id/actions_image"
@@ -35,18 +34,16 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="0dp"
         android:background="@drawable/lightsensorbutton"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/flashlight_popup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="0dp"
-        android:src="@drawable/flashlightpopup"
         android:elevation="0dp"
-        android:visibility="gone"
-        />
+        android:src="@drawable/flashlightpopup"
+        android:visibility="gone" />
 
 
     <!--Light sensor button; displays light sensor fields-->
@@ -59,8 +56,7 @@
         android:background="@android:color/transparent"
         android:onClick="displayLightSensorPopup"
         android:text="Light"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
     <!--Flashlight button; displays flashlight fields-->
     <ImageButton
@@ -72,23 +68,50 @@
         android:background="@android:color/transparent"
         android:onClick="displayFlashlightPopup"
         android:text="Flashlight"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
     <!--Check app button; hidden unless challengeApp is passed to activity; calls isEqualTo-->
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/completeChallenge"
         android:layout_width="50dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="225dp"
-        android:layout_marginTop="366dp"
-        android:background="@color/colorPrimary"
+        android:layout_marginLeft="215dp"
+        android:layout_marginTop="368dp"
+        android:background="@drawable/buttonshape"
         android:onClick="checkApp"
-        android:text="Check app"
-        app:layout_constraintTop_toBottomOf="@id/active_toggle"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="240dp"
+        android:text="\u2713"
+        android:visibility="gone" />
+
+
+    <!--Check App Button Text-->
+    <TextView
+        android:id="@+id/completeChallengeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="378dp"
+        android:text="Check Domino"
+        android:textColor="#000"
         android:visibility="gone"/>
+
+
+    <!--Check App's Pop Up Image-->
+    <ImageView
+        android:id="@+id/challengeResultsPopup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="0dp"
+        android:elevation="2dp"
+        android:src="@drawable/resultspopup"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/challengeResults"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="250dp" />
 
     <!--Light sensor popup buttons/fields-->
 
@@ -99,7 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="110dp"
         android:layout_marginTop="375dp"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <!--Light sensor lux text box-->
     <EditText xmlns:android="http://schemas.android.com/apk/res/android"
@@ -109,11 +132,10 @@
         android:layout_marginLeft="170dp"
         android:layout_marginTop="370dp"
         android:ems="10"
-        android:visibility="gone"
         android:imeOptions="actionDone"
-        android:singleLine="true"
         android:inputType="number"
-        />
+        android:singleLine="true"
+        android:visibility="gone" />
 
     <!--Light sensor save button-->
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
@@ -125,8 +147,8 @@
         android:background="@drawable/buttonshape"
         android:onClick="setLightSensor"
         android:text="Save tile"
-        app:layout_constraintTop_toBottomOf="@id/operand_spinner"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/operand_spinner" />
 
 
     <!--Flashlight popup buttons/fields-->
@@ -138,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="375dp"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <!--Flashlight duration text box-->
     <EditText xmlns:android="http://schemas.android.com/apk/res/android"
@@ -149,10 +171,9 @@
         android:layout_marginTop="370dp"
         android:ems="10"
         android:imeOptions="actionDone"
-        android:singleLine="true"
         android:inputType="number"
-        android:visibility="gone"
-        />
+        android:singleLine="true"
+        android:visibility="gone" />
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/durationTextBoxLabel"
@@ -164,8 +185,7 @@
         android:imeOptions="actionDone"
         android:singleLine="true"
         android:text="sec"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
     <!--Flashlight save button-->
 
@@ -188,8 +208,8 @@
         android:layout_marginTop="490dp"
         android:width="120dp"
         android:height="80dp"
-        android:onClick="showSensors"
         android:background="@android:color/transparent"
+        android:onClick="showSensors"
         android:text="" />
 
     <!--Opens actions menu and hides sensor button-->
@@ -199,8 +219,8 @@
         android:layout_height="65dp"
         android:layout_marginStart="180dp"
         android:layout_marginTop="490dp"
-        android:onClick="showActions"
         android:background="@android:color/transparent"
+        android:onClick="showActions"
         android:text="" />
 
     <!--Test switch/toggle-->
@@ -209,33 +229,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="335dp"
         android:padding="10dp"
         android:text="Turn domino on   "
-/>
+        android:visibility="gone" />
 
-    <!--Check Challenges Text-->
-    <TextView
-        android:id="@+id/check_challenges_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="383dp"
-        android:text="Check Domino"
-        android:textColor="#000"
-        />
-
-
-    <!--Check Challenges Button-->
-    <Button
-        android:id="@+id/check_challenges"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="215dp"
-        android:layout_marginTop="375dp"
-        android:padding="10dp"
-        android:text="\u2713"
-   />
 
     <!--Disables action button; corresponds to pencil underneath intile-->
     <ImageButton
@@ -261,16 +259,8 @@
         android:text="Save tile"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@id/flashlight_spinner"
         android:visibility="gone"
-        />
-
-    <TextView
-        android:id="@+id/challengeResults"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        app:layout_constraintTop_toBottomOf="@id/flashlight_spinner" />
 
 
     <!--Icon for Lightbulb on Intile once inputted-->
@@ -281,8 +271,7 @@
         android:layout_marginLeft="130dp"
         android:layout_marginTop="240dp"
         android:background="@drawable/lightbulb"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
     <!--Icon for Flashlight on OutTile once inputted-->
     <ImageView
@@ -292,21 +281,21 @@
         android:layout_marginLeft="251dp"
         android:layout_marginTop="240dp"
         android:background="@drawable/flashlight"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/start-play"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="115dp"
-        android:layout_marginTop="580dp"
+        android:layout_marginTop="550dp"
         android:height="80dp"
         android:background="@android:color/transparent"
         android:onClick="startPlay"
         android:text=""
         tools:layout_editor_absoluteX="238dp"
         tools:layout_editor_absoluteY="336dp" />
+
 
 </FrameLayout>
 

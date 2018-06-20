@@ -88,6 +88,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 //            Log.d("STATE", "has challenge app");
 //            Log.d("STATE", Integer.toString(challengeApp.getChains().size()));
             findViewById(R.id.completeChallenge).setVisibility(View.VISIBLE);
+            findViewById(R.id.completeChallengeText).setVisibility(View.VISIBLE);
+
         }
 
         currApp = new Applet();
@@ -338,6 +340,10 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
     public void checkApp(View view) {
         String message = this.currApp.isEqualTo(this.challengeApp);
         findViewById(R.id.challengeResults).setVisibility(View.VISIBLE);
+        findViewById(R.id.challengeResultsPopup).setVisibility(View.VISIBLE);
+        layout.getBackground().setColorFilter(Color.HSVToColor(150, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
+
+
         if (message.equals("Congratulations!")) {
             // TODO: SHOW finished button
             // TODO: Send back completed notification to Challenges page
