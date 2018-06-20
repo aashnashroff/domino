@@ -483,7 +483,9 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editLux.getWindowToken(), 0);
 
-        currApp.getChains().get(0).getCEs().get(0).addInput();
+        if (currApp.getChains().get(0).getCEs().get(0).getInputs().size() == 0) {
+            currApp.getChains().get(0).getCEs().get(0).addInput();
+        }
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateChosenVal(chosenVal);
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateOperand(operand);
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateSensor(sensorType);
