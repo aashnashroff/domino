@@ -486,4 +486,12 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             mBound = false;
         }
     };
+
+    /** Called when the user touches the play button. */
+    public void startPlay(View view) {
+        Log.d("STATE", "Play button pressed");
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        setContentView(R.layout.activity_main);
+    }
 }

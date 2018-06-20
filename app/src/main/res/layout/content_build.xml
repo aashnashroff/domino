@@ -271,5 +271,18 @@
         android:visibility="gone"
         />
 
+    <Button
+        android:id="@+id/start-play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="580dp"
+        android:height="80dp"
+        android:background="@android:color/transparent"
+        android:onClick="startPlay"
+        android:text=""
+        tools:layout_editor_absoluteX="238dp"
+        tools:layout_editor_absoluteY="336dp" />
+
 </FrameLayout>
 
