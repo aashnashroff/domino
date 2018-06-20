@@ -405,6 +405,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
         ((FlashlightOutput)currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setDuration(Integer.parseInt(duration));
         ((FlashlightOutput)currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setForever(forever);
+        findViewById(R.id.flashlighticon).setVisibility(View.VISIBLE);
 
         findViewById(R.id.flashlight_popup).setVisibility(View.INVISIBLE);
         findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
@@ -441,7 +442,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateChosenVal(chosenVal);
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateOperand(operand);
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateSensor(sensorType);
-
+        findViewById(R.id.lightbulbicon).setVisibility(View.VISIBLE);
 
         findViewById(R.id.lightButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.luxTextBox).setVisibility(View.INVISIBLE);
@@ -485,4 +486,12 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             mBound = false;
         }
     };
+
+    /** Called when the user touches the play button. */
+    public void startPlay(View view) {
+        Log.d("STATE", "Play button pressed");
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        setContentView(R.layout.activity_main);
+    }
 }
