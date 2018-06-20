@@ -415,6 +415,9 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             } else {
                 ((EditText) findViewById(R.id.durationTextBox)).setText(duration);
             }
+            if (!forever) {
+                findViewById(R.id.durationTextBox).setVisibility(View.VISIBLE);
+            }
         }
     }
 
