@@ -280,6 +280,20 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.whitebackground).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlight_popup).setVisibility(View.INVISIBLE);
         layout.getBackground().setColorFilter(Color.HSVToColor(0, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
+
+        boolean hasInputs = false;
+        if (currApp.getChains().get(0).getCEs().get(0).getInputs().size() > 0) {
+            findViewById(R.id.lightbulbicon).setVisibility(View.VISIBLE);
+            hasInputs = true;
+        }
+        boolean hasOutputs = false;
+        if (currApp.getChains().get(0).getCEs().get(0).getOutputs().size() > 0) {
+            findViewById(R.id.flashlighticon).setVisibility(View.VISIBLE);
+            hasOutputs = true;
+        }
+        if (hasInputs && hasOutputs) {
+            findViewById(R.id.active_toggle).setVisibility(View.VISIBLE);
+        }
     }
 
     // Could use this as a condition in the below two functions if useful
@@ -354,6 +368,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
     public void displayLightSensorPopup(View view) {
         findViewById(R.id.active_toggle).setVisibility(View.INVISIBLE);
+        findViewById(R.id.flashlighticon).setVisibility(View.INVISIBLE);
+        findViewById(R.id.lightbulbicon).setVisibility(View.INVISIBLE);
         findViewById(R.id.close_popup_button).setVisibility(View.VISIBLE);
 
         sensorType = Sensor.TYPE_LIGHT;
@@ -369,6 +385,9 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
     public void displayFlashlightPopup(View view) {
         findViewById(R.id.active_toggle).setVisibility(View.INVISIBLE);
+        findViewById(R.id.flashlighticon).setVisibility(View.INVISIBLE);
+        findViewById(R.id.lightbulbicon).setVisibility(View.INVISIBLE);
+
         findViewById(R.id.close_popup_button).setVisibility(View.VISIBLE);
 
         // Set output to new FlashlightOutput with default vals
@@ -422,6 +441,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.flashlightSave).setVisibility(View.INVISIBLE);
         if (currApp.getChains().get(0).getCEs().get(0).getInputs().size() > 0) {
             findViewById(R.id.active_toggle).setVisibility(View.VISIBLE);
+            findViewById(R.id.lightbulbicon).setVisibility(View.VISIBLE);
         }
         findViewById(R.id.flashlight_spinner).setVisibility(View.INVISIBLE);
         layout.getBackground().setColorFilter(Color.HSVToColor(0, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
@@ -459,6 +479,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.operand_spinner).setVisibility(View.INVISIBLE);
         if (currApp.getChains().get(0).getCEs().get(0).getOutputs().size() > 0) {
             findViewById(R.id.active_toggle).setVisibility(View.VISIBLE);
+            findViewById(R.id.flashlighticon).setVisibility(View.VISIBLE);
         }
         layout.getBackground().setColorFilter(Color.HSVToColor(0, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
 
