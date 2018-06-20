@@ -183,7 +183,7 @@
     <ImageButton
         android:id="@+id/sensorsButton"
         android:layout_width="191dp"
-        android:layout_height="63dp"
+        android:layout_height="65dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="490dp"
         android:width="120dp"
@@ -196,7 +196,7 @@
     <ImageButton
         android:id="@+id/actionsButton"
         android:layout_width="match_parent"
-        android:layout_height="63dp"
+        android:layout_height="65dp"
         android:layout_marginStart="180dp"
         android:layout_marginTop="490dp"
         android:onClick="showActions"
