@@ -157,7 +157,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         switch (parent.getId()) {
             case R.id.operand_spinner:
                 operand = parent.getItemAtPosition(pos).toString();
-                Log.d("STATE", "Set operand to: " + parent.getItemAtPosition(pos).toString());
+//                Log.d("STATE", "Set operand to: " + parent.getItemAtPosition(pos).toString());
                 break;
             case R.id.flashlight_spinner:
                 InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -182,7 +182,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     chosenVal = editLux.getText().toString();
-                    Log.d("STATE", "Set chosenVal to: " + editLux.getText().toString());
+//                    Log.d("STATE", "Set chosenVal to: " + editLux.getText().toString());
                     InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                     return true;
@@ -200,7 +200,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     duration = editDuration.getText().toString();
-                    Log.d("STATE", "Set chosenVal to: " + editDuration.getText().toString());
+//                    Log.d("STATE", "Set chosenVal to: " + editDuration.getText().toString());
                     InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                     return true;
@@ -278,6 +278,24 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.lightButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.luxTextBox).setVisibility(View.INVISIBLE);
         findViewById(R.id.operand_spinner).setVisibility(View.INVISIBLE);
+        findViewById(R.id.close_popup_button).setVisibility(View.INVISIBLE);
+        findViewById(R.id.whitebackground).setVisibility(View.INVISIBLE);
+        findViewById(R.id.flashlight_popup).setVisibility(View.INVISIBLE);
+        layout.getBackground().setColorFilter(Color.HSVToColor(0, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
+
+        boolean hasInputs = false;
+        if (currApp.getChains().get(0).getCEs().get(0).getInputs().size() > 0) {
+            findViewById(R.id.lightbulbicon).setVisibility(View.VISIBLE);
+            hasInputs = true;
+        }
+        boolean hasOutputs = false;
+        if (currApp.getChains().get(0).getCEs().get(0).getOutputs().size() > 0) {
+            findViewById(R.id.flashlighticon).setVisibility(View.VISIBLE);
+            hasOutputs = true;
+        }
+        if (hasInputs && hasOutputs) {
+            findViewById(R.id.active_toggle).setVisibility(View.VISIBLE);
+        }
     }
 
     // Could use this as a condition in the below two functions if useful
@@ -319,7 +337,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             findViewById(R.id.flashlightButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.actionsButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.sensorsButton).setVisibility(View.INVISIBLE);
-            Log.d("STATE", "Showing light sensor");
+//            Log.d("STATE", "Showing light sensor");
         }
     }
 
@@ -333,7 +351,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             findViewById(R.id.lightSensorButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.actionsButton).setVisibility(View.INVISIBLE);
             findViewById(R.id.sensorsButton).setVisibility(View.INVISIBLE);
-            Log.d("STATE", "Showing flashlight action");
+//            Log.d("STATE", "Showing flashlight action");
         }
     }
 
@@ -342,8 +360,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.challengeResults).setVisibility(View.VISIBLE);
         findViewById(R.id.challengeResultsPopup).setVisibility(View.VISIBLE);
         layout.getBackground().setColorFilter(Color.HSVToColor(150, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
-
-
+        findViewById(R.id.close_popup_button).setVisibility(View.VISIBLE);
         if (message.equals("Congratulations!")) {
             // TODO: SHOW finished button
             // TODO: Send back completed notification to Challenges page
@@ -356,6 +373,9 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
     public void displayLightSensorPopup(View view) {
         findViewById(R.id.active_toggle).setVisibility(View.INVISIBLE);
+        findViewById(R.id.flashlighticon).setVisibility(View.INVISIBLE);
+        findViewById(R.id.lightbulbicon).setVisibility(View.INVISIBLE);
+        findViewById(R.id.close_popup_button).setVisibility(View.VISIBLE);
 
         sensorType = Sensor.TYPE_LIGHT;
         findViewById(R.id.whitebackground).setVisibility(View.VISIBLE);
@@ -370,13 +390,15 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
     public void displayFlashlightPopup(View view) {
         findViewById(R.id.active_toggle).setVisibility(View.INVISIBLE);
+        findViewById(R.id.flashlighticon).setVisibility(View.INVISIBLE);
+        findViewById(R.id.lightbulbicon).setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.close_popup_button).setVisibility(View.VISIBLE);
 
         // Set output to new FlashlightOutput with default vals
         // TODO: Figure out a way to get outputTile index rather than just using 0
         OutputTile output = new FlashlightOutput(0, true, false);
-        if (currApp.getChains().get(0).getCEs().get(0).getOutputs().size() == 0) {
-            currApp.getChains().get(0).getCEs().get(0).addOutput(output);
-        } else {
+        if (currApp.getChains().get(0).getCEs().get(0).getOutputs().size() != 0) {
             output = currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0);
         }
         findViewById(R.id.flashlight_spinner).setVisibility(View.VISIBLE);
@@ -398,6 +420,9 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             } else {
                 ((EditText) findViewById(R.id.durationTextBox)).setText(duration);
             }
+            if (!forever) {
+                findViewById(R.id.durationTextBox).setVisibility(View.VISIBLE);
+            }
         }
     }
 
@@ -409,16 +434,22 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editLux.getWindowToken(), 0);
 
-        ((FlashlightOutput)currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setDuration(Integer.parseInt(duration));
-        ((FlashlightOutput)currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setForever(forever);
+        if (currApp.getChains().get(0).getCEs().get(0).getOutputs().size() == 0) {
+            currApp.getChains().get(0).getCEs().get(0).addOutput(new FlashlightOutput(Integer.parseInt(duration), true, forever));
+        } else {
+            ((FlashlightOutput) currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setDuration(Integer.parseInt(duration));
+            ((FlashlightOutput) currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0)).setForever(forever);
+        }
         findViewById(R.id.flashlighticon).setVisibility(View.VISIBLE);
 
+        findViewById(R.id.close_popup_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlight_popup).setVisibility(View.INVISIBLE);
         findViewById(R.id.durationTextBox).setVisibility(View.INVISIBLE);
         findViewById(R.id.durationTextBoxLabel).setVisibility(View.INVISIBLE);
         findViewById(R.id.flashlightSave).setVisibility(View.INVISIBLE);
         if (currApp.getChains().get(0).getCEs().get(0).getInputs().size() > 0) {
             findViewById(R.id.active_toggle).setVisibility(View.VISIBLE);
+            findViewById(R.id.lightbulbicon).setVisibility(View.VISIBLE);
         }
         findViewById(R.id.flashlight_spinner).setVisibility(View.INVISIBLE);
         layout.getBackground().setColorFilter(Color.HSVToColor(0, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
@@ -433,8 +464,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
         //CHECKING
         FlashlightOutput output = (FlashlightOutput) currApp.getChains().get(0).getCEs().get(0).getOutputs().get(0);
-        Log.d("STATE", "Created flashlight with duration: " + Integer.toString(output.getDuration()));
-        Log.d("STATE", "Created flashlight with forever: " + Boolean.toString(output.getForever()));
+//        Log.d("STATE", "Created flashlight with duration: " + Integer.toString(output.getDuration()));
+//        Log.d("STATE", "Created flashlight with forever: " + Boolean.toString(output.getForever()));
     }
 
 
@@ -450,11 +481,13 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
         currApp.getChains().get(0).getCEs().get(0).getInputs().get(0).updateSensor(sensorType);
         findViewById(R.id.lightbulbicon).setVisibility(View.VISIBLE);
 
+        findViewById(R.id.close_popup_button).setVisibility(View.INVISIBLE);
         findViewById(R.id.lightButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.luxTextBox).setVisibility(View.INVISIBLE);
         findViewById(R.id.operand_spinner).setVisibility(View.INVISIBLE);
         if (currApp.getChains().get(0).getCEs().get(0).getOutputs().size() > 0) {
             findViewById(R.id.active_toggle).setVisibility(View.VISIBLE);
+            findViewById(R.id.flashlighticon).setVisibility(View.VISIBLE);
         }
         layout.getBackground().setColorFilter(Color.HSVToColor(0, (new float[]{ 0f, 0f, 0f } )), PorterDuff.Mode.DARKEN);
 
@@ -471,9 +504,9 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
         //CHECKING
         InputTile input = currApp.getChains().get(0).getCEs().get(0).getInputs().get(0);
-        Log.d("STATE", "Created Condition with op: " + input.getOp());
-        Log.d("STATE", "Created Condition with chosenVal: " + input.getChosenValue());
-        Log.d("STATE", "Created Condition with sensor: "+ Double.toString(input.getSensor()));
+//        Log.d("STATE", "Created Condition with op: " + input.getOp());
+//        Log.d("STATE", "Created Condition with chosenVal: " + input.getChosenValue());
+//        Log.d("STATE", "Created Condition with sensor: "+ Double.toString(input.getSensor()));
     }
 
 
@@ -495,7 +528,7 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
 
     /** Called when the user touches the play button. */
     public void startPlay(View view) {
-        Log.d("STATE", "Play button pressed");
+//        Log.d("STATE", "Play button pressed");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         setContentView(R.layout.activity_main);
