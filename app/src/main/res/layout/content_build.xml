@@ -21,23 +21,20 @@
         android:visibility="gone"
         />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/actions_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="0dp"
-        android:src="@drawable/actionsbar"
-        android:elevation="0dp"
-        android:visibility="gone"
-        />
+        android:layout_marginLeft="0dp"
+        android:background="@drawable/actionsbar"
+        android:visibility="gone" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/sensors_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="0dp"
-        android:src="@drawable/lightsensorbutton"
-        android:elevation="0dp"
+        android:layout_marginLeft="0dp"
+        android:background="@drawable/lightsensorbutton"
         android:visibility="gone"
         />
 
@@ -55,12 +52,12 @@
     <!--Light sensor button; displays light sensor fields-->
     <ImageButton
         android:id="@+id/lightSensorButton"
-        android:layout_width="101dp"
+        android:layout_width="80dp"
         android:layout_height="92dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="400dp"
-        android:onClick="displayLightSensorPopup"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="410dp"
         android:background="@android:color/transparent"
+        android:onClick="displayLightSensorPopup"
         android:text="Light"
         android:visibility="gone"
         />
@@ -68,10 +65,10 @@
     <!--Flashlight button; displays flashlight fields-->
     <ImageButton
         android:id="@+id/flashlightButton"
-        android:layout_width="101dp"
+        android:layout_width="80dp"
         android:layout_height="92dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="410dp"
         android:background="@android:color/transparent"
         android:onClick="displayFlashlightPopup"
         android:text="Flashlight"
