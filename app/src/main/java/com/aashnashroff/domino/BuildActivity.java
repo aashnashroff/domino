@@ -91,6 +91,8 @@ public class BuildActivity extends AppCompatActivity implements AdapterView.OnIt
             findViewById(R.id.completeChallengeText).setVisibility(View.VISIBLE);
         } else {
             Log.d("STATE", "no challenge app");
+            //TODO: Doesn't work right now; should be generic background if no challenge app
+//            ((FrameLayout)layout).setImageDrawable(getResources().getDrawable(R.drawable.lights_out2));
             layout.setBackgroundResource(R.drawable.lights_out2);
         }
 
