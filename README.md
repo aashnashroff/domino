@@ -1,6 +1,6 @@
 # domino
 
-This is an Android app prototype for domino, an Android app that lets you create small programs with your phone's sensors and actuators. 
+This is the Git repo for domino, an Android app that lets you create small programs with your phone's sensors and actuators. 
 
 ## Project rationale:
 
